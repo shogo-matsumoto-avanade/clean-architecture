@@ -1,0 +1,14 @@
+﻿################################################################################
+# この .gitignore ファイルは Microsoft(R) Visual Studio によって自動的に作成されました。
+################################################################################
+
+/.vs
+/DDD/Practice.Ddd/Practice.Ddd.Application/bin/Debug/net8.0
+/DDD/Practice.Ddd/Practice.Ddd.Application/obj
+/DDD/Practice.Ddd/Practice.Ddd.Domain/bin/Debug/net8.0
+/DDD/Practice.Ddd/Practice.Ddd.Domain/obj
+/DDD/Practice.Ddd/Practice.Ddd.Infrastructure/bin/Debug/net8.0
+/DDD/Practice.Ddd/Practice.Ddd.Infrastructure/obj
+/DDD/Practice.Ddd/.vs/Practice.Ddd
+/DDD/Practice.Ddd/Practice.Ddd.Web/bin/Debug/net8.0
+/DDD/Practice.Ddd/Practice.Ddd.Web/obj
