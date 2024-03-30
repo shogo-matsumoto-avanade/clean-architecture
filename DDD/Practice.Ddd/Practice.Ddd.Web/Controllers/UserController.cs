@@ -18,15 +18,6 @@ namespace Practice.Ddd.Web.Controllers
         public async Task<ActionResult<UserViewModel>> Get(string id)
         {
             var user = await _mediator.Send(new GetUserQuery(id));
-            
-            if (new UserId("aa") == new UserId("aa"))
-            {
-                return new UserViewModel()
-                {
-                    UserName = "UserId is a value object."
-                };
-            }
-
             return new UserViewModel()
             {
                 UserName = user.UserName,
