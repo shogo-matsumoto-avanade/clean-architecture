@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Repositories\**" />
+    <EmbeddedResource Remove="Repositories\**" />
+    <None Remove="Repositories\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FluentValidation" Version="11.9.0" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.0" />
     <PackageReference Include="MediatR" Version="12.2.0" />
@@ -16,11 +22,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Practice.Ddd.Domain\Practice.Ddd.Domain.csproj" />
     <ProjectReference Include="..\Practice.Ddd.Infrastructure\Practice.Ddd.Infrastructure.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Request\" />
-    <Folder Include="Command\" />
   </ItemGroup>
 
 </Project>
