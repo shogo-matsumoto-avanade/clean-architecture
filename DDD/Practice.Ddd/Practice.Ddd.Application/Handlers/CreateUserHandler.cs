@@ -1,9 +1,10 @@
-﻿using Practice.Ddd.Application.Commands;
+﻿using MediatR;
+using Practice.Ddd.Application.Commands;
 using Practice.Ddd.Domain.Users;
 
 namespace Practice.Ddd.Application.Handlers;
 
-public class CreateUserHandler : CommandHandler<CreateUserCommand>
+public class CreateUserHandler : CommandHandler<CreateUserCommand, Unit>
 {
     private readonly IUserRepository _repository;
 
@@ -18,9 +19,9 @@ public class CreateUserHandler : CommandHandler<CreateUserCommand>
     /// <param name="request"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    public override Task Handle(CreateUserCommand request, CancellationToken cancellationToken)
+    public override Task<Unit> Handle(CreateUserCommand request, CancellationToken cancellationToken)
     {
         _repository.Create(request.UserName, request.FirstName, request.FamilyName);
-        return Task.CompletedTask;
+        return Task.FromResult(new Unit());
     }
 }

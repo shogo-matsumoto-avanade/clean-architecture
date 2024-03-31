@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Practice.Ddd.Application.Commands;
 using Practice.Ddd.Application.Queries;
 using Practice.Ddd.Web.Models;
 
@@ -13,7 +14,7 @@ namespace Practice.Ddd.Web.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("/user/{id}")]
         public async Task<ActionResult<UserViewModel>> Get(string id)
         {
             var user = await _mediator.Send(new GetUserQuery(id));
@@ -21,6 +22,19 @@ namespace Practice.Ddd.Web.Controllers
             {
                 UserName = user.UserName,
             };
+        }
+
+        [HttpGet("/create/{userName}/{firstName}/{lastName}")]
+        public async Task<IActionResult> Add(string userName, string firstName, string lastName)
+        {
+            await _mediator.Send(new CreateUserCommand(userName, firstName, lastName));
+            return Created("/create",
+                new UserViewModel()
+                {
+                    UserName = userName,
+                    FirstName = firstName,
+                    LastName = lastName
+                });
         }
     }
 }
