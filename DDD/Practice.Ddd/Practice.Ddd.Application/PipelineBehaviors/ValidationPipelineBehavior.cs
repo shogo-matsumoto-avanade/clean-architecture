@@ -3,6 +3,11 @@ using MediatR;
 
 namespace Practice.Ddd.Application.Pipelines
 {
+    /// <summary>
+    /// Request validation pipeline behavior
+    /// </summary>
+    /// <typeparam name="TRequest"></typeparam>
+    /// <typeparam name="TResponse">If response of the request will be void, you need to specify Unit class to the response.</typeparam>
     public class ValidationPipelineBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : notnull, IRequest<TResponse>
     {
         /// <summary>
