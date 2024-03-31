@@ -1,7 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Practice.Ddd.Application.Queries;
-using Practice.Ddd.Domain.Users;
 using Practice.Ddd.Web.Models;
 
 namespace Practice.Ddd.Web.Controllers

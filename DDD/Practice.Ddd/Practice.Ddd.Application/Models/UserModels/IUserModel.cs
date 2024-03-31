@@ -1,6 +1,8 @@
-﻿namespace Practice.Ddd.Application.Models.UserModels
+﻿using Practice.Ddd.Application.Queries;
+
+namespace Practice.Ddd.Application.Models.UserModels
 {
-    public interface IUserModel
+    public interface IUserModel : IQueryResult
     {
         string UserName { get; }
     }

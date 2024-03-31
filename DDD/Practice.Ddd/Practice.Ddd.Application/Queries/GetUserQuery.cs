@@ -1,9 +1,8 @@
-﻿using MediatR;
-using Practice.Ddd.Application.Models.UserModels;
+﻿using Practice.Ddd.Application.Models.UserModels;
 
 namespace Practice.Ddd.Application.Queries;
 
-public class GetUserQuery : IRequest<IUserModel>
+public class GetUserQuery : IQuery<IUserModel>
 {
     public GetUserQuery(string id)
     {
