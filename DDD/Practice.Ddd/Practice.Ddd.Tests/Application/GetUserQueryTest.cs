@@ -1,17 +1,13 @@
-using Castle.Core.Logging;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using Moq;
 using Practice.Ddd.Application;
-using Practice.Ddd.Application.Handlers;
 using Practice.Ddd.Application.Queries;
 using Practice.Ddd.Infrastructure;
-using Practice.Ddd.Infrastructure.Users;
 
 namespace Practice.Ddd.Tests.Application
 {
     [TestClass]
-    public class GetUserQueryTest
+    public class GetUserQueryTest : BaseMediatorRequestTest
     {
         [TestMethod]
         [DataRow(null, "When id is null, query should be error")]
@@ -19,23 +15,52 @@ namespace Practice.Ddd.Tests.Application
         public async Task GetUserQuery_InvalidParameter_Should_Be_Error(string id, string testMessage)
         {
             //Arrange
-            var services = new ServiceCollection();
-            var serviceProvider = services
-                .AddApplication()
-                .AddInfrastructure()
-                .AddTest()
-                .BuildServiceProvider();
-
-            var mediator = serviceProvider.GetRequiredService<IMediator>();
             var query = new GetUserQuery(id);
 
             //Act
-            var result = await mediator.Send(query);
+            var result = await _mediator.Send(query);
 
             //Assert
             Assert.IsTrue(result.HasError, testMessage);
             Assert.AreEqual(result.Message, "Value cannot be null. (Parameter 'UserId')", testMessage);
             return;
         }
+
+        [TestMethod]
+        [DataRow("test", "test name", "When id is {0}, user {1} is expected.")]
+        public async Task GetUserQuery_Find_Existing_User(string id, string userName, string testMessageTemplate)
+        {
+            //Arrange
+            var query = new GetUserQuery(id);
+
+            //Act
+            var result = await _mediator.Send(query);
+
+            //Assert
+            var message = string.Format(testMessageTemplate, id, userName);
+            Assert.IsFalse(result.HasError, message);
+            Assert.AreEqual(result.Message, string.Empty, message);
+            Assert.AreEqual(userName, result.UserName, message);
+            return;
+        }
+
+        [TestMethod]
+        [DataRow("aaaa", "Unknown", "Search unknown user")]
+        public async Task GetUserQuery_Find_NOT_Existing_User(string id, string userName, string testMessageTemplate)
+        {
+            //Arrange
+            var query = new GetUserQuery(id);
+
+            //Act
+            var result = await _mediator.Send(query);
+
+            //Assert
+            var message = string.Format(testMessageTemplate, id, userName);
+            Assert.IsFalse(result.HasError, message);
+            Assert.AreEqual(result.Message, string.Empty, message);
+            Assert.AreEqual(userName, result.UserName, message);
+            return;
+        }
+
     }
 }
