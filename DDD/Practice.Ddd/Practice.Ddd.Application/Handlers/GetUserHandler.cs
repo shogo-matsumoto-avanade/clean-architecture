@@ -1,5 +1,4 @@
 ﻿using Practice.Ddd.Application.Factories;
-using Practice.Ddd.Application.Models.UserModels;
 using Practice.Ddd.Application.Queries;
 using Practice.Ddd.Domain.Users;
 
