@@ -3,7 +3,7 @@ using Practice.Ddd.Application.Utilities.Exceptions;
 
 namespace Practice.Ddd.Application.Queries;
 
-public class GetUserQueryResult : ExceptionResult, IQueryResult, IUserModel
+public class FindUserByIdResult : ExceptionResult, IQueryResult, IUserModel
 {
     public required string UserName { get; set; }
 }

@@ -4,11 +4,11 @@ using Practice.Ddd.Domain.Users;
 
 namespace Practice.Ddd.Application.Handlers;
 
-public class GetUserHandler : QueryHandler<GetUserQuery, GetUserQueryResult>
+public class FindUserByIdHandler : QueryHandler<FindUserByIdQuery, FindUserByIdResult>
 {
     private readonly IUserRepository _repository;
 
-    public GetUserHandler(IUserRepository repository)
+    public FindUserByIdHandler(IUserRepository repository)
     {
         _repository = repository;
     }
@@ -19,10 +19,10 @@ public class GetUserHandler : QueryHandler<GetUserQuery, GetUserQueryResult>
     /// <param name="request"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    public override Task<GetUserQueryResult> Handle(GetUserQuery request, CancellationToken cancellationToken)
+    public override Task<FindUserByIdResult> Handle(FindUserByIdQuery request, CancellationToken cancellationToken)
     {
         var user = UserModelFactory.Create(_repository.Find(new UserId(request.Id)));
-        var model = new GetUserQueryResult()
+        var model = new FindUserByIdResult()
         {
             UserName = user.UserName
         };

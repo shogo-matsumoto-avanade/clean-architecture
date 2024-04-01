@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Practice.Ddd.Application;
 using Practice.Ddd.Infrastructure;
 
-namespace Practice.Ddd.Tests;
+namespace Practice.Ddd.Tests.Application.Integrations;
 
 [TestClass]
 public abstract class BaseMediatorRequestTest

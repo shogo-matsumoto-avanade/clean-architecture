@@ -20,7 +20,7 @@ namespace Practice.Ddd.Web.Controllers
         [HttpGet("/user")]
         public async Task<ActionResult<UserViewModel>> Get([FromQuery] string? id)
         {
-            var user = await _mediator.Send(new GetUserQuery(id!));
+            var user = await _mediator.Send(new FindUserByIdQuery(id!));
 
             return user.HasError
                 ? BadRequest(user.Message)

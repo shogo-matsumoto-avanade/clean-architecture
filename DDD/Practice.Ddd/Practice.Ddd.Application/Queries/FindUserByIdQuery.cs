@@ -1,8 +1,8 @@
 ﻿namespace Practice.Ddd.Application.Queries;
 
-public class GetUserQuery : IQuery<GetUserQueryResult>
+public class FindUserByIdQuery : IQuery<FindUserByIdResult>
 {
-    public GetUserQuery(string id)
+    public FindUserByIdQuery(string id)
     {
         Id = id;
     }

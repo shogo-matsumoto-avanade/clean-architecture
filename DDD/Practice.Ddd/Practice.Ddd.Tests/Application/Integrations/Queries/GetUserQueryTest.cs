@@ -1,6 +1,6 @@
 using Practice.Ddd.Application.Queries;
 
-namespace Practice.Ddd.Tests.Application.Queries
+namespace Practice.Ddd.Tests.Application.Integrations.Queries
 {
     [TestClass]
     public class GetUserQueryTest : BaseMediatorRequestTest
@@ -8,10 +8,10 @@ namespace Practice.Ddd.Tests.Application.Queries
         [TestMethod]
         [DataRow(null, "When id is null, query should be error")]
         [DataRow("", "When id is empty, query should be error")]
-        public async Task GetUserQuery_InvalidParameter_Should_Be_Error(string id, string testMessage)
+        public async Task InvalidParameter_Should_Be_Error(string id, string testMessage)
         {
             //Arrange
-            var query = new GetUserQuery(id);
+            var query = new FindUserByIdQuery(id);
 
             //Act
             var result = await _mediator.Send(query);
@@ -24,10 +24,10 @@ namespace Practice.Ddd.Tests.Application.Queries
 
         [TestMethod]
         [DataRow("test", "test name", "When id is {0}, user {1} is expected.")]
-        public async Task GetUserQuery_Find_Existing_User(string id, string userName, string testMessageTemplate)
+        public async Task Find_Existing_User(string id, string userName, string testMessageTemplate)
         {
             //Arrange
-            var query = new GetUserQuery(id);
+            var query = new FindUserByIdQuery(id);
 
             //Act
             var result = await _mediator.Send(query);
@@ -42,10 +42,10 @@ namespace Practice.Ddd.Tests.Application.Queries
 
         [TestMethod]
         [DataRow("aaaa", "Unknown", "Search unknown user")]
-        public async Task GetUserQuery_Find_NOT_Existing_User(string id, string userName, string testMessageTemplate)
+        public async Task Find_NOT_Existing_User(string id, string userName, string testMessageTemplate)
         {
             //Arrange
-            var query = new GetUserQuery(id);
+            var query = new FindUserByIdQuery(id);
 
             //Act
             var result = await _mediator.Send(query);
