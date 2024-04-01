@@ -1,8 +1,6 @@
-﻿using Practice.Ddd.Application.Models.UserModels;
+﻿namespace Practice.Ddd.Application.Queries;
 
-namespace Practice.Ddd.Application.Queries;
-
-public class GetUserQuery : IQuery<IUserModel>
+public class GetUserQuery : IQuery<GetUserQueryResult>
 {
     public GetUserQuery(string id)
     {

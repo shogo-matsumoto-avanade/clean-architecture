@@ -1,6 +1,8 @@
 ﻿using FluentValidation;
 using MediatR;
+using MediatR.Pipeline;
 using Microsoft.Extensions.DependencyInjection;
+using Practice.Ddd.Application.Handlers;
 using Practice.Ddd.Application.Pipelines;
 
 namespace Practice.Ddd.Application;
@@ -20,6 +22,7 @@ public static class DependencyInjection
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggerPipelineBehavior<,>));
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehavior<,>));
 
+        services.AddTransient(typeof(IRequestExceptionHandler<,,>), typeof(GlobalExceptionHandler<,,>));
         return services;
     }
 }

@@ -4,7 +4,7 @@ using Practice.Ddd.Domain.Users;
 
 namespace Practice.Ddd.Application.Handlers;
 
-public class CreateUserHandler : CommandHandler<CreateUserCommand, Unit>
+public class CreateUserHandler : CommandHandler<CreateUserCommand, CreateUserCommandResult>
 {
     private readonly IUserRepository _repository;
 
@@ -19,9 +19,9 @@ public class CreateUserHandler : CommandHandler<CreateUserCommand, Unit>
     /// <param name="request"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    public override Task<Unit> Handle(CreateUserCommand request, CancellationToken cancellationToken)
+    public override Task<CreateUserCommandResult> Handle(CreateUserCommand request, CancellationToken cancellationToken)
     {
         _repository.Create(request.UserName, request.FirstName, request.FamilyName);
-        return Task.FromResult(new Unit());
+        return Task.FromResult(new CreateUserCommandResult());
     }
 }

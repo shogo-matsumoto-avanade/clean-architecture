@@ -20,19 +20,24 @@ namespace Practice.Ddd.Web.Controllers
         [HttpGet("/user")]
         public async Task<ActionResult<UserViewModel>> Get([FromQuery] string? id)
         {
+            var user = await _mediator.Send(new GetUserQuery(id!));
 
-            var user = await _mediator.Send(new GetUserQuery(id));
-            
-            return new UserViewModel()
-            {
-                UserName = user.UserName,
-            };
+            return user.HasError
+                ? BadRequest(user.Message)
+                : Ok(new UserViewModel()
+                {
+                    UserName = user.UserName,
+                });
         }
 
         [HttpGet("/user/create")]
         public async Task<IActionResult> Add([FromQuery] string userName, [FromQuery] string firstName, [FromQuery] string lastName)
         {
-            await _mediator.Send(new CreateUserCommand(userName, firstName, lastName));
+            var result = await _mediator.Send(new CreateUserCommand(userName, firstName, lastName));
+            if (result.HasError)
+            {
+                return BadRequest(result.Message);
+            }
             await _mediator.Publish(new UserCreatedNotification()
             {
                 User = UserModelFactory.Create(userName),

@@ -21,7 +21,7 @@ public class UserCreatedSmsHandler : INotificationHandler<UserCreatedNotificatio
     public Task Handle(UserCreatedNotification notification, CancellationToken cancellationToken)
     {
         // Send Sms
-        _logger.LogInformation($"Sent SMS of {notification.User.UserName}");
+        _logger.LogInformation("Sent SMS of {user}", notification.User.UserName);
         return Task.CompletedTask;
     }
 }

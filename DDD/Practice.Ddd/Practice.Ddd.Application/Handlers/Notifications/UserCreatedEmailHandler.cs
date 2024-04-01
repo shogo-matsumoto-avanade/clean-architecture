@@ -21,7 +21,7 @@ public class UserCreatedEmailHandler : INotificationHandler<UserCreatedNotificat
     public Task Handle(UserCreatedNotification notification, CancellationToken cancellationToken)
     {
         // Send Email
-        _logger.LogInformation($"Sent Email to {notification.User.UserName}@xxx.com");
+        _logger.LogInformation("Sent Email to {user}@xxx.com", notification.User.UserName);
         return Task.CompletedTask;
     }
 }

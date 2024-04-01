@@ -5,7 +5,7 @@ using Practice.Ddd.Domain.Users;
 
 namespace Practice.Ddd.Application.Handlers;
 
-public class GetUserHandler : QueryHandler<GetUserQuery, IUserModel>
+public class GetUserHandler : QueryHandler<GetUserQuery, GetUserQueryResult>
 {
     private readonly IUserRepository _repository;
 
@@ -20,10 +20,13 @@ public class GetUserHandler : QueryHandler<GetUserQuery, IUserModel>
     /// <param name="request"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    public override Task<IUserModel> Handle(GetUserQuery request, CancellationToken cancellationToken)
+    public override Task<GetUserQueryResult> Handle(GetUserQuery request, CancellationToken cancellationToken)
     {
-        var user = _repository.Find(new UserId(request.Id));
-        IUserModel model = UserModelFactory.Create(user);
+        var user = UserModelFactory.Create(_repository.Find(new UserId(request.Id)));
+        var model = new GetUserQueryResult()
+        {
+            UserName = user.UserName
+        };
         return Task.FromResult(model);
     }
 }

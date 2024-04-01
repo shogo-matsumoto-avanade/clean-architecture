@@ -11,7 +11,6 @@ internal class UserModel : IUserModel
     public UserModel(string userName)
     {
         UserName = userName;
-
     }
     public string UserName { get; private set; }
 }

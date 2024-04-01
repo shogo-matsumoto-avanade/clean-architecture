@@ -5,7 +5,11 @@ public class UserId : ValueObject
     public string Value { get; private set; }
     public UserId(string value)
     {
-        ArgumentNullException.ThrowIfNull(value);
+        if (value is null)
+        {
+            throw new ArgumentNullException(nameof(UserId));
+        }
+
         Value = value;
     }
 
