@@ -1,5 +1,5 @@
 ﻿using Practice.Ddd.Application.Models.UserModels;
-using Practice.Ddd.Application.Utilities;
+using Practice.Ddd.Application.Utilities.Exceptions;
 
 namespace Practice.Ddd.Application.Queries;
 

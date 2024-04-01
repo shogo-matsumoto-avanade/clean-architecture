@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using MediatR.Pipeline;
 using Microsoft.Extensions.Logging;
-using Practice.Ddd.Application.Utilities;
+using Practice.Ddd.Application.Utilities.Exceptions;
 
 namespace Practice.Ddd.Application.Handlers;
 
