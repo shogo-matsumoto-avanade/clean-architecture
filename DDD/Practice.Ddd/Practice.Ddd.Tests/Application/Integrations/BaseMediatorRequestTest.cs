@@ -5,23 +5,33 @@ using Practice.Ddd.Infrastructure;
 
 namespace Practice.Ddd.Tests.Application.Integrations;
 
+/// <summary>
+/// Mediator Request base class
+/// </summary>
 [TestClass]
 public abstract class BaseMediatorRequestTest
 {
     protected readonly IMediator _mediator;
 
+    /// <summary>
+    /// Provide dependency injection and setup IMediator
+    /// </summary>
     protected BaseMediatorRequestTest()
     {
         var services = new ServiceCollection();
         var serviceProvider = services
             .AddApplication()
             .AddInfrastructure()
-            .AddTest()
+            .AddTestSettings()
             .BuildServiceProvider();
 
         _mediator = serviceProvider.GetRequiredService<IMediator>();
 
         AdditionalTestSetting();
     }
+
+    /// <summary>
+    /// Additional Test Settings
+    /// </summary>
     protected virtual void AdditionalTestSetting() { }
 }

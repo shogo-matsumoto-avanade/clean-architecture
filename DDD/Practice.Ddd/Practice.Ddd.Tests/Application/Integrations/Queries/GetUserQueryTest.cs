@@ -19,7 +19,6 @@ namespace Practice.Ddd.Tests.Application.Integrations.Queries
             //Assert
             Assert.IsTrue(result.HasError, testMessage);
             Assert.AreEqual(result.Message, "Value cannot be null. (Parameter 'UserId')", testMessage);
-            return;
         }
 
         [TestMethod]
@@ -37,7 +36,6 @@ namespace Practice.Ddd.Tests.Application.Integrations.Queries
             Assert.IsFalse(result.HasError, message);
             Assert.AreEqual(result.Message, string.Empty, message);
             Assert.AreEqual(userName, result.UserName, message);
-            return;
         }
 
         [TestMethod]
@@ -55,7 +53,6 @@ namespace Practice.Ddd.Tests.Application.Integrations.Queries
             Assert.IsFalse(result.HasError, message);
             Assert.AreEqual(result.Message, string.Empty, message);
             Assert.AreEqual(userName, result.UserName, message);
-            return;
         }
 
     }

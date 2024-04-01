@@ -18,7 +18,6 @@ namespace Practice.Ddd.Tests.Application.Integrations.Queries
 
             //Assert
             Assert.IsTrue(result.HasError, testMessage);
-            return;
         }
 
 
