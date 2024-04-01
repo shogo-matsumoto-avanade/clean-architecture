@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Practice.Ddd.Application;
 using Practice.Ddd.Infrastructure;
 
-namespace Practice.Ddd.Tests.Application;
+namespace Practice.Ddd.Tests;
 
 [TestClass]
 public abstract class BaseMediatorRequestTest
@@ -23,6 +23,5 @@ public abstract class BaseMediatorRequestTest
 
         AdditionalTestSetting();
     }
-
     protected virtual void AdditionalTestSetting() { }
 }

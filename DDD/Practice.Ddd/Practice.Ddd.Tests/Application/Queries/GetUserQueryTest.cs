@@ -1,6 +1,6 @@
 using Practice.Ddd.Application.Queries;
 
-namespace Practice.Ddd.Tests.Application
+namespace Practice.Ddd.Tests.Application.Queries
 {
     [TestClass]
     public class GetUserQueryTest : BaseMediatorRequestTest
