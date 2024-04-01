@@ -9,6 +9,11 @@ namespace Practice.Ddd.Application.Pipelines
         /// Validators for the Handler
         /// </summary>
         private readonly IEnumerable<IValidator<TRequest>> _validators;
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="validators"></param>
         public ValidationPipelineBehavior(IEnumerable<IValidator<TRequest>> validators)
         {
             _validators = validators;

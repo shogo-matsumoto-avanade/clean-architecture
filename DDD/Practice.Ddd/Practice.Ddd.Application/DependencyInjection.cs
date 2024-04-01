@@ -17,6 +17,7 @@ public static class DependencyInjection
         services.AddValidatorsFromAssembly(assembly);
 
         // Priority of pipeline behaviors can be changed by the order in which pipeline behaviors are registered
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggerPipelineBehavior<,>));
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehavior<,>));
 
         return services;
