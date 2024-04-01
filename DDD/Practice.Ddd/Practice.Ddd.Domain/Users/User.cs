@@ -11,12 +11,12 @@ public class User
     /// <exception cref="ArgumentNullException"></exception>
     public User(string userId, string userName)
     {
-        if (userId == null) throw new ArgumentNullException(nameof(userId));
+        ArgumentNullException.ThrowIfNull(userId);
         UserId = new UserId(userId);
         UserName = userName;
     }
-    
+
     public UserId UserId { get; private set; }
 
-    public string UserName { get; private set;}
+    public string UserName { get; private set; }
 }

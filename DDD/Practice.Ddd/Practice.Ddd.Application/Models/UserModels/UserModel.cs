@@ -8,5 +8,10 @@ internal class UserModel : IUserModel
     {
         UserName = user.UserName;
     }
+    public UserModel(string userName)
+    {
+        UserName = userName;
+
+    }
     public string UserName { get; private set; }
 }
