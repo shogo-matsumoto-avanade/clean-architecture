@@ -1,8 +1,4 @@
-using MediatR;
-using Microsoft.Extensions.DependencyInjection;
-using Practice.Ddd.Application;
 using Practice.Ddd.Application.Queries;
-using Practice.Ddd.Infrastructure;
 
 namespace Practice.Ddd.Tests.Application
 {
