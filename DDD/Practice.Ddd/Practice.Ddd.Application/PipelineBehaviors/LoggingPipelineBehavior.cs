@@ -4,15 +4,20 @@ using Newtonsoft.Json;
 
 namespace Practice.Ddd.Application.Pipelines
 {
-    public class LoggerPipelineBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : notnull, IRequest<TResponse>
+    /// <summary>
+    /// Pipeline behavior logging before and after handler execution
+    /// </summary>
+    /// <typeparam name="TRequest"></typeparam>
+    /// <typeparam name="TResponse"></typeparam>
+    public class LoggingPipelineBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : notnull, IRequest<TResponse>
     {
-        private readonly ILogger<LoggerPipelineBehavior<TRequest, TResponse>> _logger;
+        private readonly ILogger<LoggingPipelineBehavior<TRequest, TResponse>> _logger;
  
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="logger"></param>
-        public LoggerPipelineBehavior(ILogger<LoggerPipelineBehavior<TRequest, TResponse>> logger)
+        public LoggingPipelineBehavior(ILogger<LoggingPipelineBehavior<TRequest, TResponse>> logger)
         {
             _logger = logger;
         }

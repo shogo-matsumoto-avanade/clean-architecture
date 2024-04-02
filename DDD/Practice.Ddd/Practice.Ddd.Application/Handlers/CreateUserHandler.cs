@@ -1,5 +1,4 @@
-﻿using MediatR;
-using Practice.Ddd.Application.Commands;
+﻿using Practice.Ddd.Application.Commands;
 using Practice.Ddd.Domain.Users;
 
 namespace Practice.Ddd.Application.Handlers;

@@ -3,6 +3,11 @@ using MediatR;
 
 namespace Practice.Ddd.Application.Pipelines
 {
+    /// <summary>
+    /// Pipeline behavior which validate requests with IValidator
+    /// </summary>
+    /// <typeparam name="TRequest"></typeparam>
+    /// <typeparam name="TResponse"></typeparam>
     public class ValidationPipelineBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : notnull, IRequest<TResponse>
     {
         /// <summary>
