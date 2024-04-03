@@ -1,4 +1,4 @@
-﻿namespace Practice.Ddd.Domain.Orders;
+﻿namespace Practice.Ddd.Domain.Products;
 
 public class ProductId(Guid value)
 {

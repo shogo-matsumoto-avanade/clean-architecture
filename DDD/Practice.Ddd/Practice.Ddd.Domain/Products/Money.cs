@@ -1,3 +1,3 @@
-﻿namespace Practice.Ddd.Domain.Orders;
+﻿namespace Practice.Ddd.Domain.Products;
 
 public record Money(string Currency, decimal Amount);

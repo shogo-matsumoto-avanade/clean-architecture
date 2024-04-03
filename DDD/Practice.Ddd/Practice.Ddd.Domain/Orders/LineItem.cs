@@ -1,4 +1,6 @@
-﻿namespace Practice.Ddd.Domain.Orders;
+﻿using Practice.Ddd.Domain.Products;
+
+namespace Practice.Ddd.Domain.Orders;
 
 public class LineItem
 {

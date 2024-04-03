@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Practice.Ddd.Domain.Orders;
+using Practice.Ddd.Domain.Products;
 
 namespace Practice.Ddd.Persistence.Configurations;
 
