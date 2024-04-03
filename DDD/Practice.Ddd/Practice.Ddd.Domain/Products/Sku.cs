@@ -2,7 +2,7 @@
 
 public class Sku
 {
-    private const int DefaultLength = 15;
+    private const int _defaultLength = 15;
 
     public Sku(string value) => Value = value;
 
@@ -14,7 +14,7 @@ public class Sku
         {
             return null;
         }
-        if (value.Length != DefaultLength)
+        if (value.Length != _defaultLength)
         {
             return null;
         }
