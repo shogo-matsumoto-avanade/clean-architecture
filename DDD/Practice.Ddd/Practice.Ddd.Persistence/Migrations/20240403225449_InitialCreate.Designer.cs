@@ -12,7 +12,7 @@ using Practice.Ddd.Persistence;
 namespace Practice.Ddd.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240403041949_InitialCreate")]
+    [Migration("20240403225449_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -83,7 +83,7 @@ namespace Practice.Ddd.Persistence.Migrations
                     b.ToTable("Order");
                 });
 
-            modelBuilder.Entity("Practice.Ddd.Domain.Orders.Product", b =>
+            modelBuilder.Entity("Practice.Ddd.Domain.Products.Product", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
@@ -111,13 +111,13 @@ namespace Practice.Ddd.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Practice.Ddd.Domain.Orders.Product", null)
+                    b.HasOne("Practice.Ddd.Domain.Products.Product", null)
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsOne("Practice.Ddd.Domain.Orders.Money", "Price", b1 =>
+                    b.OwnsOne("Practice.Ddd.Domain.Products.Money", "Price", b1 =>
                         {
                             b1.Property<Guid>("LineItemId")
                                 .HasColumnType("uniqueidentifier");
@@ -152,9 +152,9 @@ namespace Practice.Ddd.Persistence.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Practice.Ddd.Domain.Orders.Product", b =>
+            modelBuilder.Entity("Practice.Ddd.Domain.Products.Product", b =>
                 {
-                    b.OwnsOne("Practice.Ddd.Domain.Orders.Money", "Price", b1 =>
+                    b.OwnsOne("Practice.Ddd.Domain.Products.Money", "Price", b1 =>
                         {
                             b1.Property<Guid>("ProductId")
                                 .HasColumnType("uniqueidentifier");
