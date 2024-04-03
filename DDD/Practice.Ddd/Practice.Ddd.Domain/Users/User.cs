@@ -1,22 +1,37 @@
-﻿
-namespace Practice.Ddd.Domain.Users;
+﻿namespace Practice.Ddd.Domain.Users;
 
 public class User
 {
+    private User() { }
     /// <summary>
     /// Constractor
     /// </summary>
-    /// <param name="userId"></param>
-    /// <param name="userName"></param>
+    /// <param name="id"></param>
+    /// <param name="firstName"></param>
     /// <exception cref="ArgumentNullException"></exception>
-    public User(string userId, string userName)
+    public User(string id, string firstName, string familyName, string email)
     {
-        ArgumentNullException.ThrowIfNull(userId);
-        UserId = new UserId(userId);
-        UserName = userName;
+        ArgumentNullException.ThrowIfNull(id);
+        ArgumentNullException.ThrowIfNull(firstName);
+        ArgumentNullException.ThrowIfNull(familyName);
+        ArgumentNullException.ThrowIfNull(email);
+
+        Id = new UserId(id);
+        FirstName = firstName;
+        FamilyName = familyName;
+        Email = email;
     }
 
-    public UserId UserId { get; private set; }
+    public UserId Id { get; private set; }
+    public string FirstName { get; private set; }
+    public string FamilyName { get; private set; }
+    public string Email { get; private set; }
 
-    public string UserName { get; private set; }
+    public string UserName
+    {
+        get
+        {
+            return $"{FirstName} {FamilyName}";
+        }
+    }
 }

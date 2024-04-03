@@ -9,7 +9,6 @@ public class UserId : ValueObject
         {
             throw new ArgumentNullException(nameof(UserId));
         }
-
         Value = value;
     }
 

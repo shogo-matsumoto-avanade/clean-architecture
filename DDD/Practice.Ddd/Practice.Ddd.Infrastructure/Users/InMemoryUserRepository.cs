@@ -12,6 +12,6 @@ public class InMemoryUserRepository : IUserRepository
     public User? Find(UserId userId)
     {
         if (!userId.Equals(new UserId("test"))) return null;
-        return new User("test", "test name");
+        return new User("test-id", "first name", "last name", "xxxx@xxxx");
     }
 }

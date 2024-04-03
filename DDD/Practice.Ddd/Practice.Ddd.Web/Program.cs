@@ -1,5 +1,7 @@
+using Microsoft.EntityFrameworkCore;
 using Practice.Ddd.Application;
 using Practice.Ddd.Infrastructure;
+using Practice.Ddd.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +10,9 @@ builder.Services.AddControllersWithViews();
 builder.Services
     .AddApplication()
     .AddInfrastructure();
+
+builder.Services.AddDbContext<ApplicationDbContext>(options => 
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ApplicationDbContext")));
 
 var app = builder.Build();
 

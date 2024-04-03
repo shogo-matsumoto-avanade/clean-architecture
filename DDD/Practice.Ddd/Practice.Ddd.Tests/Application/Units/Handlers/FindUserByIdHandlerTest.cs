@@ -22,6 +22,6 @@ public class FindUserByIdHandlerTest
         var result = await handler.Handle(query, cancellationToken) ;
 
         //Assert
-        Assert.AreEqual("test name", result.UserName);
+        Assert.AreEqual("first name last name", result.UserName);
     }
 }
