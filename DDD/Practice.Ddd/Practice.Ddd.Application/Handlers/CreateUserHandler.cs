@@ -20,7 +20,7 @@ public class CreateUserHandler : CommandHandler<CreateUserCommand, CreateUserCom
     /// <returns></returns>
     public override Task<CreateUserCommandResult> Handle(CreateUserCommand request, CancellationToken cancellationToken)
     {
-        _repository.Create(request.UserName, request.FirstName, request.FamilyName);
+        _repository.Create(User.Create(request.UserName, request.FirstName, request.FamilyName));
         return Task.FromResult(new CreateUserCommandResult());
     }
 }

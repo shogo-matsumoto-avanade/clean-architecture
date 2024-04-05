@@ -34,4 +34,10 @@ public class User
             return $"{FirstName} {FamilyName}";
         }
     }
+
+    public static User Create(string firstName, string familyName, string email)
+    {
+        var id = Guid.NewGuid().ToString()[..30];
+        return new User(id, firstName, familyName, email);
+    }
 }

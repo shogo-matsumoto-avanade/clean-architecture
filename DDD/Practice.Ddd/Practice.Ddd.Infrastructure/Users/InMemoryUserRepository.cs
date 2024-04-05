@@ -4,7 +4,7 @@ namespace Practice.Ddd.Infrastructure.Users;
 
 public class InMemoryUserRepository : IUserRepository
 {
-    public void Create(string userName, string firstName, string lastName)
+    public void Create(User user)
     {
         //throw new NotImplementedException();
     }

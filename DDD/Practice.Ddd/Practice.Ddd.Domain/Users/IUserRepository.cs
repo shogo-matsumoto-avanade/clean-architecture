@@ -4,6 +4,6 @@
     {
         public User? Find(UserId userId);
 
-        public void Create(string userName, string firstName, string lastName);
+        public void Create(User user);
     }
 }
