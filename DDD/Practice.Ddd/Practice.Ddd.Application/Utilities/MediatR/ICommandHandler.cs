@@ -1,11 +1,13 @@
 ﻿using MediatR;
 
-namespace Practice.Ddd.Application.Utilities.MediatR
-{
-    public interface ICommandHandler<in TCommand> : IRequestHandler<TCommand, Unit> 
-        where TCommand : ICommand;
+namespace Practice.Ddd.Application.Utilities.MediatR;
 
-    public interface ICommandHandler<in TCommand, TResponse> : IRequestHandler<TCommand, TResponse>
-        where TCommand : ICommand<TResponse>
-        where TResponse : ICommandResult;
-}
+/// <summary>
+/// Command Handler interface with response. 
+/// Responseless command handlers have NOT been added because pipeline behaviors skip them. 
+/// </summary>
+/// <typeparam name="TCommand"></typeparam>
+/// <typeparam name="TResponse"></typeparam>
+public interface ICommandHandler<in TCommand, TResponse> : IRequestHandler<TCommand, TResponse>
+    where TCommand : ICommand<TResponse>
+    where TResponse : ICommandResult;
