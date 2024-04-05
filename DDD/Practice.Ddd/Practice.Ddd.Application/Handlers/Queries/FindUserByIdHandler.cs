@@ -25,7 +25,8 @@ public class FindUserByIdHandler : IQueryHandler<FindUserByIdQuery, FindUserById
         var user = UserModelFactory.Create(_repository.Find(new UserId(request.Id)));
         var model = new FindUserByIdResult()
         {
-            UserName = user.UserName
+            UserName = user.UserName,
+            Email = user.Email,
         };
         return Task.FromResult(model);
     }

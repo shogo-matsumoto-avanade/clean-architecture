@@ -3,7 +3,7 @@ using MediatR;
 using MediatR.Pipeline;
 using Microsoft.Extensions.DependencyInjection;
 using Practice.Ddd.Application.Handlers;
-using Practice.Ddd.Application.Pipelines;
+using Practice.Ddd.Application.PipelineBehaviors;
 
 namespace Practice.Ddd.Application;
 

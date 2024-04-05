@@ -6,12 +6,12 @@ namespace Practice.Ddd.Tests.Application.Integrations.Queries
     public class CreateUserCommandTest : BaseMediatorRequestTest
     {
         [TestMethod]
-        [DataRow(null, "a", "a", "When user name is null, query should be error")]
-        [DataRow("", "b", "c", "When user name is empty, query should be error")]
-        public async Task InvalidParameter_Should_Be_Error(string userName, string firstName, string lastName, string testMessage)
+        [DataRow(null, "a", "xxx@xxx", "When first name is null, query should be error")]
+        [DataRow("", "b", "xxx@xxx", "When first name is empty, query should be error")]
+        public async Task FirstName_Is_Required(string firstName, string lastName, string email, string testMessage)
         {
             //Arrange
-            var command = new CreateUserCommand(userName, firstName, lastName);
+            var command = new CreateUserCommand(firstName, lastName, email);
 
             //Act
             var result = await _mediator.Send(command);

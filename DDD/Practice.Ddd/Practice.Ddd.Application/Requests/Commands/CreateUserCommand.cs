@@ -4,14 +4,14 @@ namespace Practice.Ddd.Application.Requests.Commands;
 
 public class CreateUserCommand : ICommand<CreateUserCommandResult>
 {
-    public CreateUserCommand(string userName, string firstName, string familyName)
+    public CreateUserCommand(string firstName, string familyName, string email)
     {
-        UserName = userName;
         FirstName = firstName;
-        FamilyName = familyName;
+        LastName = familyName;
+        Email = email;
     }
 
-    public string UserName { get; }
     public string FirstName { get; }
-    public string FamilyName { get; }
+    public string LastName { get; }
+    public string Email { get; }
 }

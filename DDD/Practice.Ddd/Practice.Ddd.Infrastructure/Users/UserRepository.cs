@@ -1,17 +1,24 @@
 ﻿using Practice.Ddd.Domain.Users;
-using System.Security.Cryptography.X509Certificates;
+using Practice.Ddd.Persistence;
 
 namespace Practice.Ddd.Infrastructure.Users;
 
 public class UserRepository : IUserRepository
 {
+    private readonly ApplicationDbContext _dbContext;
+    public UserRepository(ApplicationDbContext dbContext)
+    {
+        _dbContext = dbContext;
+    }
+
     public void Create(User user)
     {
-        throw new NotImplementedException();
+        _dbContext.Add(user);
     }
 
     public User? Find(UserId userId)
     {
-        throw new NotImplementedException();
+        var user = _dbContext.Find(typeof(User), userId);
+        return user is null ? null : (User)user;
     }
 }

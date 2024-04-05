@@ -8,6 +8,12 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services)
     {
+        services.AddTransient<IUserRepository, UserRepository>();
+        return services;
+    }
+
+    public static IServiceCollection AddInMemoryInfrastructure(this IServiceCollection services)
+    {
         services.AddTransient<IUserRepository, InMemoryUserRepository>();
         return services;
     }

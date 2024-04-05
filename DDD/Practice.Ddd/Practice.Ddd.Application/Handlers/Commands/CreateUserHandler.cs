@@ -21,7 +21,7 @@ public class CreateUserHandler : ICommandHandler<CreateUserCommand, CreateUserCo
     /// <returns></returns>
     public Task<CreateUserCommandResult> Handle(CreateUserCommand request, CancellationToken cancellationToken)
     {
-        _repository.Create(User.Create(request.UserName, request.FirstName, request.FamilyName));
+        _repository.Create(User.Create(request.FirstName, request.LastName, request.Email));
         return Task.FromResult(new CreateUserCommandResult());
     }
 }

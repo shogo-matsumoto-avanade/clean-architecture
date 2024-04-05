@@ -14,12 +14,12 @@ public static class UserModelFactory
         return new UserModel(user);
     }
 
-    public static IUserModel Create(string userName)
+    public static IUserModel Create(string userName, string email)
     {
         if (userName is null)
         {
             return new NullUserModel();
         }
-        return new UserModel(userName);
+        return new UserModel(userName, string.Empty);
     }
 }

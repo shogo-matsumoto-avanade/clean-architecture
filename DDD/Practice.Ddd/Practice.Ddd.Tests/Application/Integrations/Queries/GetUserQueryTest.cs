@@ -8,7 +8,7 @@ namespace Practice.Ddd.Tests.Application.Integrations.Queries
         [TestMethod]
         [DataRow(null, "When id is null, query should be error")]
         [DataRow("", "When id is empty, query should be error")]
-        public async Task InvalidParameter_Should_Be_Error(string id, string testMessage)
+        public async Task UserId_Is_Required(string id, string testMessage)
         {
             //Arrange
             var query = new FindUserByIdQuery(id);

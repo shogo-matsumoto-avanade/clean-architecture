@@ -3,5 +3,6 @@
     public interface IUserModel
     {
         string UserName { get; }
+        string Email { get; }
     }
 }

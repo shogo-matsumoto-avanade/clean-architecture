@@ -21,7 +21,7 @@ public abstract class BaseMediatorRequestTest
         var services = new ServiceCollection();
         var serviceProvider = services
             .AddApplication()
-            .AddInfrastructure()
+            .AddInMemoryInfrastructure()
             .AddTestSettings()
             .BuildServiceProvider();
 
