@@ -1,4 +1,4 @@
-﻿namespace Practice.Ddd.Application.Utilities.MediatR;
+﻿namespace Practice.Ddd.Application.Utilities.Requests;
 
 /// <summary>
 /// Base command interface

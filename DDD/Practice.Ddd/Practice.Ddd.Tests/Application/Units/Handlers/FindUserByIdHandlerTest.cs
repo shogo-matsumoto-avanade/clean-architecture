@@ -1,5 +1,5 @@
 ﻿using Practice.Ddd.Application.Handlers;
-using Practice.Ddd.Application.Queries;
+using Practice.Ddd.Application.Requests.Queries;
 using Practice.Ddd.Infrastructure.Users;
 
 namespace Practice.Ddd.Tests.Application.Units.Handlers;

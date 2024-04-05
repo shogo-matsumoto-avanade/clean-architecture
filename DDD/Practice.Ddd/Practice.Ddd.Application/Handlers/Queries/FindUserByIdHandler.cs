@@ -1,6 +1,6 @@
 ﻿using Practice.Ddd.Application.Factories;
-using Practice.Ddd.Application.Queries;
-using Practice.Ddd.Application.Utilities.MediatR;
+using Practice.Ddd.Application.Requests.Queries;
+using Practice.Ddd.Application.Utilities.Requests;
 using Practice.Ddd.Domain.Users;
 
 namespace Practice.Ddd.Application.Handlers;

@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Practice.Ddd.Application.Utilities.MediatR;
+namespace Practice.Ddd.Application.Utilities.Requests;
 
 /// <summary>
 /// Command Handler interface with response. 

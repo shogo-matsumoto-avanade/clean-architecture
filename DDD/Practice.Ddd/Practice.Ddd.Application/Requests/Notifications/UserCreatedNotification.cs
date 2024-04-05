@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Practice.Ddd.Application.Models.UserModels;
 
-namespace Practice.Ddd.Application.Notifications;
+namespace Practice.Ddd.Application.Requests.Notifications;
 
 public class UserCreatedNotification : INotification
 {

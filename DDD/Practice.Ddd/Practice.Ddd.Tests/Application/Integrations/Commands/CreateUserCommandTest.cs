@@ -1,4 +1,4 @@
-using Practice.Ddd.Application.Commands;
+using Practice.Ddd.Application.Requests.Commands;
 
 namespace Practice.Ddd.Tests.Application.Integrations.Queries
 {

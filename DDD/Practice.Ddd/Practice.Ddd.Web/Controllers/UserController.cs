@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Practice.Ddd.Application.Commands;
+using Practice.Ddd.Application.Requests.Commands;
 using Practice.Ddd.Application.Factories;
-using Practice.Ddd.Application.Notifications;
-using Practice.Ddd.Application.Queries;
+using Practice.Ddd.Application.Requests.Notifications;
+using Practice.Ddd.Application.Requests.Queries;
 using Practice.Ddd.Domain.Users;
 using Practice.Ddd.Web.Models;
 

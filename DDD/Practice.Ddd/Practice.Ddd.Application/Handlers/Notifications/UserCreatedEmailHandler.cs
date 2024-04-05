@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
-using Practice.Ddd.Application.Notifications;
+using Practice.Ddd.Application.Requests.Notifications;
 
 namespace Practice.Ddd.Application.Handlers;
 

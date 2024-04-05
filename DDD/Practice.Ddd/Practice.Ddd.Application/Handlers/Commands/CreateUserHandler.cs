@@ -1,5 +1,5 @@
-﻿using Practice.Ddd.Application.Commands;
-using Practice.Ddd.Application.Utilities.MediatR;
+﻿using Practice.Ddd.Application.Requests.Commands;
+using Practice.Ddd.Application.Utilities.Requests;
 using Practice.Ddd.Domain.Users;
 
 namespace Practice.Ddd.Application.Handlers;
