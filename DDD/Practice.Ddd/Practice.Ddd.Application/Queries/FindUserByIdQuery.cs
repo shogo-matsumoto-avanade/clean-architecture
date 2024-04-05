@@ -1,4 +1,6 @@
-﻿namespace Practice.Ddd.Application.Queries;
+﻿using Practice.Ddd.Application.Utilities.MediatR;
+
+namespace Practice.Ddd.Application.Queries;
 
 public class FindUserByIdQuery : IQuery<FindUserByIdResult>
 {

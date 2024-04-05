@@ -1,10 +1,11 @@
 ﻿using Practice.Ddd.Application.Factories;
 using Practice.Ddd.Application.Queries;
+using Practice.Ddd.Application.Utilities.MediatR;
 using Practice.Ddd.Domain.Users;
 
 namespace Practice.Ddd.Application.Handlers;
 
-public class FindUserByIdHandler : QueryHandler<FindUserByIdQuery, FindUserByIdResult>
+public class FindUserByIdHandler : IQueryHandler<FindUserByIdQuery, FindUserByIdResult>
 {
     private readonly IUserRepository _repository;
 
@@ -19,7 +20,7 @@ public class FindUserByIdHandler : QueryHandler<FindUserByIdQuery, FindUserByIdR
     /// <param name="request"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    public override Task<FindUserByIdResult> Handle(FindUserByIdQuery request, CancellationToken cancellationToken)
+    public Task<FindUserByIdResult> Handle(FindUserByIdQuery request, CancellationToken cancellationToken)
     {
         var user = UserModelFactory.Create(_repository.Find(new UserId(request.Id)));
         var model = new FindUserByIdResult()

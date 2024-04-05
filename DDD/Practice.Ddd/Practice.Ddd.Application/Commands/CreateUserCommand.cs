@@ -1,4 +1,6 @@
-﻿namespace Practice.Ddd.Application.Commands;
+﻿using Practice.Ddd.Application.Utilities.MediatR;
+
+namespace Practice.Ddd.Application.Commands;
 
 public class CreateUserCommand : ICommand<CreateUserCommandResult>
 {
