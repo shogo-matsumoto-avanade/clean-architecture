@@ -10,7 +10,7 @@ namespace Practice.Ddd.Application.Handlers;
 /// <remarks>
 /// Notification can execute multiple processes with no dependencies. 
 /// </remarks>
-public class UserCreatedSmsHandler : INotificationHandler<UserCreatedNotification>
+public class UserCreatedSmsHandler : INotificationHandler<UserCreatedEvent>
 {
     private readonly ILogger<UserCreatedSmsHandler> _logger;
     public UserCreatedSmsHandler(ILogger<UserCreatedSmsHandler> logger)
@@ -18,10 +18,10 @@ public class UserCreatedSmsHandler : INotificationHandler<UserCreatedNotificatio
         _logger = logger;        
     }
 
-    public Task Handle(UserCreatedNotification notification, CancellationToken cancellationToken)
+    public Task Handle(UserCreatedEvent notification, CancellationToken cancellationToken)
     {
         // Send Sms
-        _logger.LogInformation("Sent SMS of {user}", notification.User.UserName);
+        _logger.LogInformation("Sent SMS of {user}", notification.UserName);
         return Task.CompletedTask;
     }
 }

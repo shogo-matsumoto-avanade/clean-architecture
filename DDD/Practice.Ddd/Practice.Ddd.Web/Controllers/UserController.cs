@@ -34,23 +34,13 @@ public class UserController : Controller
     public async Task<IActionResult> Add([FromQuery] string firstName, [FromQuery] string lastName, [FromQuery] string email)
     {
         var result = await _mediator.Send(new CreateUserCommand(firstName, lastName, email));
-        if (result.HasError)
-        {
-            return BadRequest(result.Message);
-        }
-
-        //User should be find from DB.
-        var userName = $"{firstName} {lastName}";
-
-        await _mediator.Publish(new UserCreatedNotification()
-        {
-            User = UserModelFactory.Create(userName, email),
-        });
-        return Created("/user/create",
-            new UserViewModel()
-            {
-                UserName = userName,
-                Email = email,
-            });
+        return result.HasError 
+            ? BadRequest(result.Message) 
+            : Created("/user/create",
+                new UserViewModel()
+                {
+                    UserName = $"{firstName} {lastName}",
+                    Email = email,
+                });
     }
 }
