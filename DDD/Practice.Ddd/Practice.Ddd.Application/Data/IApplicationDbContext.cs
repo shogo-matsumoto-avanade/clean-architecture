@@ -9,9 +9,12 @@ namespace Practice.Ddd.Application.Data;
 public interface IApplicationDbContext
 {
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
-    //public DbSet<User> Users { get; set; }
-    //public DbSet<Customer> Customers { get; set; }
-    //public DbSet<Order> Orders { get; set; }
-    //public DbSet<LineItem> LineItems { get; set; }
-    //public DbSet<Product> Products { get; set; }
+    /// <summary>
+    /// The property name of DbSet objects must be match the Table name
+    /// </summary>
+    public DbSet<User> User { get; set; }
+    public DbSet<Customer> Customer { get; set; }
+    public DbSet<Order> Order { get; set; }
+    public DbSet<LineItem> LineItem { get; set; }
+    public DbSet<Product> Product { get; set; }
 }

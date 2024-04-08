@@ -9,7 +9,8 @@ namespace Practice.Ddd.Application.PipelineBehaviors;
 /// </summary>
 /// <typeparam name="TRequest"></typeparam>
 /// <typeparam name="TResponse"></typeparam>
-public class UnitOfWorkBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : notnull, IRequest<TResponse>
+public class UnitOfWorkBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> 
+    where TRequest : notnull, IRequest<TResponse>
 {
     private readonly IUnitOfWork _unitOfWork;
 
@@ -22,7 +23,10 @@ public class UnitOfWorkBehavior<TRequest, TResponse> : IPipelineBehavior<TReques
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
+    public async Task<TResponse> Handle(
+        TRequest request, 
+        RequestHandlerDelegate<TResponse> next, 
+        CancellationToken cancellationToken)
     {
         if (IsNotCommand())
         {

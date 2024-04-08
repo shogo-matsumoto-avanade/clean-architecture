@@ -9,11 +9,8 @@ namespace Practice.Ddd.Persistence;
 
 public class ApplicationDbContext : DbContext, IApplicationDbContext, IUnitOfWork
 {
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
-    {
-    }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder options)
+    public ApplicationDbContext(DbContextOptions options) 
+        : base(options)
     {
     }
 
@@ -22,9 +19,9 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext, IUnitOfWor
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
     }
 
-    //public DbSet<User> Users { get; set; }
-    //public DbSet<Customer> Customers { get; set; }
-    //public DbSet<Order> Orders { get; set; }
-    //public DbSet<LineItem> LineItems { get; set; }
-    //public DbSet<Product> Products { get; set; }
+    public DbSet<User> User { get; set; }
+    public DbSet<Customer> Customer { get; set; }
+    public DbSet<Order> Order { get; set; }
+    public DbSet<LineItem> LineItem { get; set; }
+    public DbSet<Product> Product { get; set; }
 }

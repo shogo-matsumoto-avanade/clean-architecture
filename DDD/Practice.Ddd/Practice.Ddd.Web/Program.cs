@@ -8,7 +8,7 @@ builder.Services.AddControllersWithViews();
 // Add services of the application
 builder.Services
     .AddApplication()
-    .AddInfrastructure(builder.Configuration);
+    .AddPersistence(builder.Configuration);
 
 var app = builder.Build();
 

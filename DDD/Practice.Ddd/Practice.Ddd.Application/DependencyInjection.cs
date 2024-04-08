@@ -13,17 +13,17 @@ public static class DependencyInjection
     {
         var assembly = typeof(DependencyInjection).Assembly;
 
-        services.AddMediatR(configuration =>
-            configuration.RegisterServicesFromAssemblies(assembly));
+        services.AddMediatR(config =>
+        {
+            config.RegisterServicesFromAssemblies(assembly);
+
+            // Priority of pipeline behaviors can be changed by the order in which pipeline behaviors are registered
+            config.AddOpenBehavior(typeof(LoggingPipelineBehavior<,>));
+            config.AddOpenBehavior(typeof(ValidationPipelineBehavior<,>));
+            config.AddOpenBehavior(typeof(UnitOfWorkBehavior<,>));
+        });
 
         services.AddValidatorsFromAssembly(assembly);
-
-        // Priority of pipeline behaviors can be changed by the order in which pipeline behaviors are registered
-        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingPipelineBehavior<,>));
-        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehavior<,>));
-        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(UnitOfWorkBehavior<,>));
-
-        services.AddTransient(typeof(IRequestExceptionHandler<,,>), typeof(GlobalExceptionHandler<,,>));
         return services;
     }
 }

@@ -5,19 +5,19 @@ namespace Practice.Ddd.Persistence.Repositories;
 
 public class UserRepository : IUserRepository
 {
-    private readonly ApplicationDbContext _dbContext;
-    public UserRepository(ApplicationDbContext dbContext)
+    private readonly IApplicationDbContext _context;
+    public UserRepository(IApplicationDbContext context)
     {
-        _dbContext = dbContext;
+        _context = context;
     }
 
     public void Add(User user)
     {
-        _dbContext.Add(user);
+        _context.User.Add(user);
     }
 
     public async Task<User?> FindByIdAsync(UserId userId)
     {
-        return await _dbContext.FindAsync<User>(userId);
+        return await _context.User.FindAsync(userId);
     }
 }

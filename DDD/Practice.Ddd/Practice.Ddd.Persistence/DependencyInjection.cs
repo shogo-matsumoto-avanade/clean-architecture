@@ -9,15 +9,16 @@ namespace Practice.Ddd.Persistence;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(configuration.GetConnectionString("Database")));
 
+        //Use GetRequiredService with AddScoped because the same transaction should be used.
         services.AddScoped<IApplicationDbContext>(sp => 
             sp.GetRequiredService<ApplicationDbContext>());
-
-        services.AddScoped<IUnitOfWork, ApplicationDbContext>();
+        services.AddScoped<IUnitOfWork>(sp =>
+            sp.GetRequiredService<ApplicationDbContext>());
 
         services.AddScoped<IUserRepository, UserRepository>();
 
