@@ -1,6 +1,6 @@
 ﻿using Practice.Ddd.Application.Handlers;
 using Practice.Ddd.Application.Requests.Queries;
-using Practice.Ddd.Infrastructure.Users;
+using Practice.Ddd.Tests.Mocks.Repositories;
 
 namespace Practice.Ddd.Tests.Application.Units.Handlers;
 
@@ -9,7 +9,7 @@ public class FindUserByIdHandlerTest
 {
 
     [TestMethod]
-    [DataRow("test")]
+    [DataRow("test-id")]
     public async Task Find_Valid_Existing_User(string id)
     {
         //Arrange

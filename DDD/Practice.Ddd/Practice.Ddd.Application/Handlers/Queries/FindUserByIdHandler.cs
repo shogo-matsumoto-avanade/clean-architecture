@@ -20,14 +20,15 @@ public class FindUserByIdHandler : IQueryHandler<FindUserByIdQuery, FindUserById
     /// <param name="request"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    public Task<FindUserByIdResult> Handle(FindUserByIdQuery request, CancellationToken cancellationToken)
+    public async Task<FindUserByIdResult> Handle(FindUserByIdQuery request, CancellationToken cancellationToken)
     {
-        var user = UserModelFactory.Create(_repository.Find(new UserId(request.Id)));
+        var user = await _repository.FindByIdAsync(new UserId(request.Id));
+        var userModel = UserModelFactory.Create(user);
         var model = new FindUserByIdResult()
         {
-            UserName = user.UserName,
-            Email = user.Email,
+            UserName = userModel.UserName,
+            Email = userModel.Email,
         };
-        return Task.FromResult(model);
+        return model;
     }
 }

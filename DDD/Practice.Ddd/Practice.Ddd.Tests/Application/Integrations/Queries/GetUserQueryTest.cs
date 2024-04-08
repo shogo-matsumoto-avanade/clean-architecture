@@ -22,7 +22,7 @@ namespace Practice.Ddd.Tests.Application.Integrations.Queries
         }
 
         [TestMethod]
-        [DataRow("test", "first name last name", "When id is {0}, user {1} is expected.")]
+        [DataRow("test-id", "first name last name", "When id is {0}, user {1} is expected.")]
         public async Task Find_Existing_User(string id, string userName, string testMessageTemplate)
         {
             //Arrange

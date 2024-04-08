@@ -2,8 +2,8 @@
 {
     public interface IUserRepository
     {
-        public User? Find(UserId userId);
+        public Task<User?> FindByIdAsync(UserId userId);
 
-        public void Create(User user);
+        public void Add(User user);
     }
 }

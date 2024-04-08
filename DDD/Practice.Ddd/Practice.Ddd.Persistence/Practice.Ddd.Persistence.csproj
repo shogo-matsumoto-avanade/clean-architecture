@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Practice.Ddd.Application\Practice.Ddd.Application.csproj" />
     <ProjectReference Include="..\Practice.Ddd.Domain\Practice.Ddd.Domain.csproj" />
   </ItemGroup>
 

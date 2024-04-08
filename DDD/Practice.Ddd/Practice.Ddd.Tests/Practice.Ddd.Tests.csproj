@@ -22,10 +22,15 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Practice.Ddd.Application\Practice.Ddd.Application.csproj" />
+    <ProjectReference Include="..\Practice.Ddd.Persistence\Practice.Ddd.Persistence.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Mocks\Repositories\" />
   </ItemGroup>
 
 </Project>
