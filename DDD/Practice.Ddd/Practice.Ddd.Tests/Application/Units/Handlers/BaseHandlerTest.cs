@@ -1,22 +1,16 @@
-using MediatR;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Practice.Ddd.Application;
 
-namespace Practice.Ddd.Tests.Application.Integrations;
+namespace Practice.Ddd.Tests.Application.Units.Handlers;
 
-/// <summary>
-/// Mediator Request base class
-/// </summary>
-[TestClass]
-public abstract class BaseMediatorRequestTest
-{
+public class BaseHandlerTest
+{ 
     protected readonly IServiceProvider _servicesProvider;
-    protected readonly IMediator _mediator;
 
     /// <summary>
-    /// Provide dependency injection and setup IMediator
+    /// Provide dependency injection
     /// </summary>
-    protected BaseMediatorRequestTest()
+    protected BaseHandlerTest()
     {
         var services = new ServiceCollection();
         _servicesProvider = services
@@ -24,8 +18,6 @@ public abstract class BaseMediatorRequestTest
             .AddTestInfrastructure()
             .AddTestSettings()
             .BuildServiceProvider();
-
-        _mediator = _servicesProvider.GetRequiredService<IMediator>();
 
         AdditionalTestSetting();
     }

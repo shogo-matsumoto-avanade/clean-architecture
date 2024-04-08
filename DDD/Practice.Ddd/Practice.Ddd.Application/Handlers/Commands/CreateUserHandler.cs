@@ -30,7 +30,7 @@ public class CreateUserHandler : ICommandHandler<CreateUserCommand, CreateUserCo
         
         _userRepository.Add(user);
 
-        await _publisher.Publish(new UserCreatedEvent(user.UserName, user.Email), cancellationToken);
+        await _publisher.Publish(new UserCreatedEvent(user.Id, user.UserName, user.Email), cancellationToken);
         
         return new CreateUserCommandResult();
     }

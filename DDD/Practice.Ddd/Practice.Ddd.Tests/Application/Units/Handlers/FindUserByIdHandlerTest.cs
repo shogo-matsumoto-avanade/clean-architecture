@@ -1,11 +1,12 @@
-﻿using Practice.Ddd.Application.Handlers;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Practice.Ddd.Application.Handlers;
 using Practice.Ddd.Application.Requests.Queries;
-using Practice.Ddd.Tests.Mocks.Repositories;
+using Practice.Ddd.Domain.Users;
 
 namespace Practice.Ddd.Tests.Application.Units.Handlers;
 
 [TestClass]
-public class FindUserByIdHandlerTest
+public class FindUserByIdHandlerTest : BaseHandlerTest
 {
 
     [TestMethod]
@@ -13,7 +14,7 @@ public class FindUserByIdHandlerTest
     public async Task Find_Valid_Existing_User(string id)
     {
         //Arrange
-        var repository = new InMemoryUserRepository();
+        var repository = _servicesProvider.GetRequiredService<IUserRepository>();
         var handler = new FindUserByIdHandler(repository);
         var query = new FindUserByIdQuery(id);
         var cancellationToken = new CancellationToken();
@@ -22,6 +23,6 @@ public class FindUserByIdHandlerTest
         var result = await handler.Handle(query, cancellationToken) ;
 
         //Assert
-        Assert.AreEqual("first name last name", result.UserName);
+        Assert.AreEqual("test user", result.UserName);
     }
 }
