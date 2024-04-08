@@ -2,7 +2,7 @@
 
 namespace Practice.Ddd.Application.Requests.Queries;
 
-public class FindUserByIdQuery : IQuery<FindUserByIdResult>
+public class FindUserByIdQuery : IQuery<FindUserResult>
 {
     public FindUserByIdQuery(string id)
     {

@@ -1,4 +1,5 @@
-﻿using Practice.Ddd.Application.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using Practice.Ddd.Application.Data;
 using Practice.Ddd.Domain.Users;
 
 namespace Practice.Ddd.Persistence.Repositories;
@@ -14,6 +15,11 @@ public class UserRepository : IUserRepository
     public void Add(User user)
     {
         _context.User.Add(user);
+    }
+
+    public async Task<User?> FindByEmailAsync(string email)
+    {
+        return await _context.User.SingleOrDefaultAsync(u => u.Email == email);
     }
 
     public async Task<User?> FindByIdAsync(UserId userId)

@@ -5,11 +5,11 @@ using Practice.Ddd.Domain.Users;
 
 namespace Practice.Ddd.Application.Handlers;
 
-public sealed class FindUserByIdHandler : IQueryHandler<FindUserByIdQuery, FindUserResult>
+public sealed class FindUserByEmailHandler : IQueryHandler<FindUserByEmailQuery, FindUserResult>
 {
     private readonly IUserRepository _repository;
 
-    public FindUserByIdHandler(IUserRepository repository)
+    public FindUserByEmailHandler(IUserRepository repository)
     {
         _repository = repository;
     }
@@ -20,9 +20,9 @@ public sealed class FindUserByIdHandler : IQueryHandler<FindUserByIdQuery, FindU
     /// <param name="request"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    public async Task<FindUserResult> Handle(FindUserByIdQuery request, CancellationToken cancellationToken)
+    public async Task<FindUserResult> Handle(FindUserByEmailQuery request, CancellationToken cancellationToken)
     {
-        var user = await _repository.FindByIdAsync(new UserId(request.Id));
+        var user = await _repository.FindByEmailAsync(request.Email);
         var userModel = UserModelFactory.Create(user);
         var model = new FindUserResult()
         {
