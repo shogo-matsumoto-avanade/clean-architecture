@@ -33,7 +33,7 @@ namespace Practice.Ddd.Tests.Application.Integrations.Queries
             //Precondiction
             var unitOfWork = _servicesProvider.GetRequiredService<IUnitOfWork>();
             var userRepository = _servicesProvider.GetRequiredService<IUserRepository>();
-            var user = await userRepository.FindByEmailAsync(email);
+            var user = await userRepository.FindByEmailAsync(new Email(email));
             if (user is not null)
             {
                 userRepository.Remove(user);
@@ -50,17 +50,17 @@ namespace Practice.Ddd.Tests.Application.Integrations.Queries
             var result = await _mediator.Send(query);
 
             //Assert
-            var actualUser = await userRepository.FindByEmailAsync(email);
+            var actualUser = await userRepository.FindByEmailAsync(new Email(email));
             Assert.IsNotNull(actualUser);
             Assert.AreEqual(actualUser.FirstName, firstName);
             Assert.AreEqual(actualUser.FamilyName, familyName);
-            Assert.AreEqual(actualUser.Email, email);
+            Assert.AreEqual(actualUser.Email, new Email(email));
 
             domainLoggerMock.Verify(x =>
-                x.UserCreated(actualUser.Id, actualUser.UserName, actualUser.Email),
+                x.UserCreated(actualUser.Id, actualUser.UserName, actualUser.Email.Value),
                 Times.Once);
-            busMock.Verify(x => x.SendAsync($"Sent SMS of {user!.Id}:{user.UserName}"), Times.Once);
-            busMock.Verify(x => x.SendAsync($"Sent Email to {user!.Email}"), Times.Once);
+            busMock.Verify(x => x.SendAsync($"Sent SMS of {actualUser!.Id}:{actualUser.UserName}"), Times.Once);
+            busMock.Verify(x => x.SendAsync($"Sent Email to {actualUser!.Email}"), Times.Once);
         }
     }
 }

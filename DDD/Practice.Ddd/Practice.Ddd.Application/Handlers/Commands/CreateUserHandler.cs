@@ -26,7 +26,7 @@ public class CreateUserHandler : ICommandHandler<CreateUserCommand, CreateUserCo
     /// <returns></returns>
     public async Task<CreateUserCommandResult> Handle(CreateUserCommand request, CancellationToken cancellationToken)
     {
-        var userFindByEmail = await _userRepository.FindByEmailAsync(request.Email);
+        var userFindByEmail = await _userRepository.FindByEmailAsync(new Email(request.Email));
         if (userFindByEmail is not null)
         {
             throw new ValidationException($"The email has been already regsitered.");
@@ -35,7 +35,7 @@ public class CreateUserHandler : ICommandHandler<CreateUserCommand, CreateUserCo
         
         _userRepository.Add(newUser);
 
-        await _publisher.Publish(new UserCreatedEvent(newUser.Id, newUser.UserName, newUser.Email), cancellationToken);
+        await _publisher.Publish(new UserCreatedEvent(newUser.Id, newUser.UserName, newUser.Email.Value), cancellationToken);
         
         return new CreateUserCommandResult();
     }

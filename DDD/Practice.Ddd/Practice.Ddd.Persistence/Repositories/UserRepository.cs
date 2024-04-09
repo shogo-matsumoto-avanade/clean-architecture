@@ -17,7 +17,7 @@ public sealed class UserRepository : IUserRepository
         _context.User.Add(user);
     }
 
-    public async Task<User?> FindByEmailAsync(string email)
+    public async Task<User?> FindByEmailAsync(Email email)
     {
         return await _context.User.SingleOrDefaultAsync(u => u.Email == email);
     }

@@ -19,13 +19,13 @@ public class User
         Id = new UserId(id);
         FirstName = firstName;
         FamilyName = familyName;
-        Email = email;
+        Email = new Email(email);
     }
 
     public UserId Id { get; private set; }
     public string FirstName { get; private set; }
     public string FamilyName { get; private set; }
-    public string Email { get; private set; }
+    public Email Email { get; private set; }
 
     public string UserName
     {

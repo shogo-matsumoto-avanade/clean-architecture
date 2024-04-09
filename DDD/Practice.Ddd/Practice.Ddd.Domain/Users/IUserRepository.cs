@@ -6,7 +6,7 @@
 
         public void Add(User user);
 
-        Task<User?> FindByEmailAsync(string email);
+        Task<User?> FindByEmailAsync(Email email);
 
         public void Remove(User user);
     }

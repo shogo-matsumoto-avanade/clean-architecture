@@ -19,7 +19,10 @@ internal class UserConfigration : IEntityTypeConfiguration<User>
 
         builder.Property(u => u.FamilyName).HasMaxLength(50);
 
-        builder.Property(u => u.Email).HasMaxLength(255);
+        builder.Property(u => u.Email).HasConversion(
+            email => email.Value,
+            value => new Email(value))
+            .HasMaxLength(255);
 
         builder.HasIndex(c => c.Email).IsUnique();
     }

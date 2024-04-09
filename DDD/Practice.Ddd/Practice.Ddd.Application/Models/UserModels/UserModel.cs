@@ -7,7 +7,7 @@ internal class UserModel : IUserModel
     public UserModel(User user)
     {
         UserName = user.UserName;
-        Email = user.Email;
+        Email = user.Email.ToString();
     }
     public UserModel(string userName, string email)
     {

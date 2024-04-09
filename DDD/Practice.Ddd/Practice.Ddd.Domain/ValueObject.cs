@@ -50,4 +50,11 @@ public abstract class ValueObject
     {
         return NotEqualOperator(one, two);
     }
+
+    protected abstract string ValueObjectToString();
+
+    public override string ToString()
+    {
+        return ValueObjectToString();
+    }
 }
