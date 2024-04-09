@@ -18,7 +18,7 @@ public class BaseUnitTest
         _servicesProvider = services
             .AddUnitTestApplication()
             .AddTestPersistence()
-            .AddIntegrationTestInfrastructure()
+            .AddTestInfrastructure()
             .BuildServiceProvider();
 
         _mediator = _servicesProvider.GetRequiredService<IMediator>();

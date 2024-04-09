@@ -22,7 +22,7 @@ public abstract class BaseMediatorRequestTest
         _servicesProvider = services
             .AddApplication()
             .AddTestPersistence()
-            .AddIntegrationTestInfrastructure()
+            .AddTestInfrastructure()
             .BuildServiceProvider();
 
         _mediator = _servicesProvider.GetRequiredService<IMediator>();

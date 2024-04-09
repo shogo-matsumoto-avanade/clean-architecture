@@ -14,7 +14,7 @@ namespace Practice.Ddd.Tests;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddIntegrationTestInfrastructure(this IServiceCollection services)
+    public static IServiceCollection AddTestInfrastructure(this IServiceCollection services)
     { 
         services.AddLogging();
 
