@@ -44,17 +44,17 @@ public class UserController : Controller
             });
     }
 
-    [HttpGet("/user/create")]
-    public async Task<IActionResult> Add([FromQuery] string firstName, [FromQuery] string lastName, [FromQuery] string email)
+    [HttpPost("/user/create")]
+    public async Task<IActionResult> Add([FromBody] CreateUserCommand request)
     {
-        var result = await _mediator.Send(new CreateUserCommand(firstName, lastName, email));
+        var result = await _mediator.Send(request);
         return result.HasError 
             ? BadRequest(result.Message)
             : Created("/user/create",
                 new UserViewModel()
                 {
-                    UserName = $"{firstName} {lastName}",
-                    Email = email,
+                    UserName = $"{request.FirstName} {request.FamilyName}",
+                    Email = request.Email,
                 });
     }
 }

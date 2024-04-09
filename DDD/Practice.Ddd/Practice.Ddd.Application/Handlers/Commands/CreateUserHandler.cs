@@ -31,7 +31,7 @@ public class CreateUserHandler : ICommandHandler<CreateUserCommand, CreateUserCo
         {
             throw new ValidationException($"The email has been already regsitered.");
         }
-        var newUser = User.Create(request.FirstName, request.LastName, request.Email);
+        var newUser = User.Create(request.FirstName, request.FamilyName, request.Email);
         
         _userRepository.Add(newUser);
 
