@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
 using Practice.Ddd.Application.Requests.Notifications;
+using Practice.Ddd.Application.Services;
 
 namespace Practice.Ddd.Application.Handlers;
 
@@ -12,16 +13,17 @@ namespace Practice.Ddd.Application.Handlers;
 /// </remarks>
 public class UserCreatedEmailHandler : INotificationHandler<UserCreatedEvent>
 {
-    private readonly ILogger<UserCreatedEmailHandler> _logger;
-    public UserCreatedEmailHandler(ILogger<UserCreatedEmailHandler> logger)
+    private readonly IMessageBus _messageBus;
+
+    public UserCreatedEmailHandler(IMessageBus messageBus)
     {
-        _logger = logger;
+        _messageBus = messageBus;
     }
 
-    public Task Handle(UserCreatedEvent notification, CancellationToken cancellationToken)
+    public async Task Handle(
+        UserCreatedEvent notification, 
+        CancellationToken cancellationToken)
     {
-        // Send Email
-        _logger.LogInformation("Sent Email to {email}", notification.Email);
-        return Task.CompletedTask;
+        await _messageBus.SendAsync($"Sent Email to {notification.Email}");
     }
 }

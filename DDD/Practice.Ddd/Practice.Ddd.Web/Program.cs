@@ -1,4 +1,5 @@
 using Practice.Ddd.Application;
+using Practice.Ddd.Infrastructure;
 using Practice.Ddd.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,7 +9,8 @@ builder.Services.AddControllersWithViews();
 // Add services of the application
 builder.Services
     .AddApplication()
-    .AddPersistence(builder.Configuration);
+    .AddPersistence(builder.Configuration)
+    .AddInfrastructure();
 
 var app = builder.Build();
 

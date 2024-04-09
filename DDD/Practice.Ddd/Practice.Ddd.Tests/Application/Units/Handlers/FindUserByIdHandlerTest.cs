@@ -6,7 +6,7 @@ using Practice.Ddd.Domain.Users;
 namespace Practice.Ddd.Tests.Application.Units.Handlers;
 
 [TestClass]
-public class FindUserByIdHandlerTest : BaseHandlerTest
+public class FindUserByIdHandlerTest : BaseUnitTest
 {
 
     [TestMethod]
@@ -20,9 +20,10 @@ public class FindUserByIdHandlerTest : BaseHandlerTest
         var cancellationToken = new CancellationToken();
 
         //Act
-        var result = await handler.Handle(query, cancellationToken) ;
+        var result = await handler.Handle(query, cancellationToken);
 
         //Assert
         Assert.AreEqual("test user", result.UserName);
     }
+
 }

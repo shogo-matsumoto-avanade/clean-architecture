@@ -4,7 +4,7 @@ using Practice.Ddd.Domain.Users;
 
 namespace Practice.Ddd.Persistence.Repositories;
 
-public class UserRepository : IUserRepository
+public sealed class UserRepository : IUserRepository
 {
     private readonly IApplicationDbContext _context;
     public UserRepository(IApplicationDbContext context)
@@ -25,5 +25,10 @@ public class UserRepository : IUserRepository
     public async Task<User?> FindByIdAsync(UserId userId)
     {
         return await _context.User.FindAsync(userId);
+    }
+
+    public void Remove(User user)
+    {
+        _context.User.Remove(user);
     }
 }

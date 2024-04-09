@@ -30,12 +30,26 @@ public class UserController : Controller
             });
     }
 
+    [HttpGet("/user/email")]
+    public async Task<ActionResult<UserViewModel>> GetByEmail([FromQuery] string? email)
+    {
+        var user = await _mediator.Send(new FindUserByEmailQuery(email!));
+
+        return user.HasError
+            ? BadRequest(user.Message)
+            : Ok(new UserViewModel()
+            {
+                UserName = user.UserName,
+                Email = user.Email,
+            });
+    }
+
     [HttpGet("/user/create")]
     public async Task<IActionResult> Add([FromQuery] string firstName, [FromQuery] string lastName, [FromQuery] string email)
     {
         var result = await _mediator.Send(new CreateUserCommand(firstName, lastName, email));
         return result.HasError 
-            ? BadRequest(result.Message) 
+            ? BadRequest(result.Message)
             : Created("/user/create",
                 new UserViewModel()
                 {

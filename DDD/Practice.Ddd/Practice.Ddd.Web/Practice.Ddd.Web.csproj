@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Practice.Ddd.Application\Practice.Ddd.Application.csproj" />
+    <ProjectReference Include="..\Practice.Ddd.Infrastructure\Practice.Ddd.Infrastructure.csproj" />
     <ProjectReference Include="..\Practice.Ddd.Persistence\Practice.Ddd.Persistence.csproj" />
   </ItemGroup>
 

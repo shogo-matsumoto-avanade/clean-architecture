@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
 using Practice.Ddd.Application.Requests.Notifications;
+using Practice.Ddd.Application.Services;
 
 namespace Practice.Ddd.Application.Handlers;
 
@@ -12,16 +13,14 @@ namespace Practice.Ddd.Application.Handlers;
 /// </remarks>
 public class UserCreatedSmsHandler : INotificationHandler<UserCreatedEvent>
 {
-    private readonly ILogger<UserCreatedSmsHandler> _logger;
-    public UserCreatedSmsHandler(ILogger<UserCreatedSmsHandler> logger)
+    private readonly IMessageBus _messageBus;
+    public UserCreatedSmsHandler(IMessageBus logger)
     {
-        _logger = logger;        
+        _messageBus = logger;        
     }
 
-    public Task Handle(UserCreatedEvent notification, CancellationToken cancellationToken)
+    public async Task Handle(UserCreatedEvent notification, CancellationToken cancellationToken)
     {
-        // Send Sms
-        _logger.LogInformation("Sent SMS of {id}:{user}", notification.UserId, notification.UserName);
-        return Task.CompletedTask;
+        await _messageBus.SendAsync($"Sent SMS of {notification.UserId}:{notification.UserName}");
     }
 }

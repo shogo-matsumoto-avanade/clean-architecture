@@ -1,7 +1,6 @@
 ﻿using FluentValidation;
-using Practice.Ddd.Application.Requests.Commands;
 
-namespace Practice.Ddd.Application.Validators.Commands;
+namespace Practice.Ddd.Application.Requests.Commands;
 
 public class CreateUserCommandValidator : AbstractValidator<CreateUserCommand>
 {
