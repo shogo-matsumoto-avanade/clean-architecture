@@ -12,9 +12,8 @@ namespace Practice.Ddd.Tests.Application.Integrations.Queries
     public class CreateUserCommandTest : BaseMediatorRequestTest
     {
         [TestMethod]
-        [DataRow(null, "a", "xxx@xxx", "When first name is null, query should be error")]
-        [DataRow("", "b", "xxx@xxx", "When first name is empty, query should be error")]
-        public async Task FirstName_Is_Required(string firstName, string lastName, string email, string testMessage)
+        [DynamicData(nameof(InvalidCreateUserCommandData))]
+        public async Task Command_will_occur_error_when_invalid_parameters(string firstName, string lastName, string email, string errorMessage, string testMessage)
         {
             //Arrange
             var command = new CreateUserCommand(firstName, lastName, email);
@@ -24,7 +23,19 @@ namespace Practice.Ddd.Tests.Application.Integrations.Queries
 
             //Assert
             Assert.IsTrue(result.HasError, testMessage);
+            Assert.AreEqual(errorMessage, result.Message);
         }
+
+        public static IEnumerable<object[]> InvalidCreateUserCommandData => [
+                    [null, "unittest", "xxx@xxx", "Validation failed: \r\n -- FirstName: 'First Name' は空であってはなりません。 Severity: Error", "When first name is null, query should be error"],
+                    ["", "unittest", "xxx@xxx", "Validation failed: \r\n -- FirstName: 'First Name' は空であってはなりません。 Severity: Error", "When first name is empty, query should be error"],
+                    ["test", null, "xxx@xxx", "Validation failed: \r\n -- FamilyName: 'Family Name' は空であってはなりません。 Severity: Error", "When family name is null, query should be error"],
+                    ["test", "", "xxx@xxx", "Validation failed: \r\n -- FamilyName: 'Family Name' は空であってはなりません。 Severity: Error", "When family name is empty, query should be error"],
+                    ["test", "unittest", null, "Validation failed: \r\n -- Email: 'Email' は空であってはなりません。 Severity: Error", "When email is null, query should be error"],
+                    ["test", "unittest", "", "Validation failed: \r\n -- Email: 'Email' は空であってはなりません。 Severity: Error", "When email is empty, query should be error"],
+                    ["test", "unittest", "a@b", "Invalid format of Email value object (Parameter 'Email')", "When email is invalid, query should be error"],
+                ];
+
 
         [TestMethod]
         [DataRow("test", "integration", "it@test.xxx.com")]
