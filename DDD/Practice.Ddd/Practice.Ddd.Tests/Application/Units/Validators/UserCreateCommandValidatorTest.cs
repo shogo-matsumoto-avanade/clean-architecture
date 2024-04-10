@@ -1,4 +1,5 @@
-﻿using Practice.Ddd.Application.Requests.Commands;
+﻿using FluentAssertions;
+using Practice.Ddd.Application.Requests.Commands;
 
 namespace Practice.Ddd.Tests.Application.Units.Validators;
 
@@ -18,8 +19,8 @@ public class UserCreateCommandValidatorTest
         var result = await sut.ValidateAsync(query);
 
         //Assert
-        Assert.IsFalse(result.IsValid, testMessage);
-        Assert.AreEqual(exceptedErrorCount, result.Errors.Count, testMessage);
+        result.IsValid.Should().BeFalse(testMessage);
+        result.Errors.Should().HaveCount(exceptedErrorCount, testMessage);
     }
 
     public static IEnumerable<object[]> InvalidCreateUserCommandData => [
@@ -46,8 +47,8 @@ public class UserCreateCommandValidatorTest
         var result = await sut.ValidateAsync(query);
 
         //Assert
-        Assert.IsTrue(result.IsValid, testMessage);
-        Assert.AreEqual(0, result.Errors.Count, testMessage);
+        result.IsValid.Should().BeTrue(testMessage);
+        result.Errors.Should().BeEmpty(testMessage);
     }
 
     public static IEnumerable<object[]> ValidCreateUserCommandData => [

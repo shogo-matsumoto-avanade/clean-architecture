@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FluentAssertions;
+using Microsoft.Extensions.DependencyInjection;
 using Practice.Ddd.Application.Handlers;
 using Practice.Ddd.Application.Requests.Queries;
 using Practice.Ddd.Domain.Users;
@@ -24,7 +25,7 @@ public class FindUserByIdHandlerTest : BaseUnitTest
         var result = await handler.Handle(query, cancellationToken);
 
         //Assert
-        Assert.AreEqual(expectedUserName, result.UserName, testMessage);
+        result.UserName.Should().Be(expectedUserName, testMessage);
     }
 
 }

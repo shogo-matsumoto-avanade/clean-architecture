@@ -1,3 +1,4 @@
+using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using Practice.Ddd.Application.Data;
@@ -62,10 +63,10 @@ namespace Practice.Ddd.Tests.Application.Integrations.Queries
 
             //Assert
             var actualUser = await userRepository.FindByEmailAsync(new Email(email));
-            Assert.IsNotNull(actualUser);
-            Assert.AreEqual(actualUser.FirstName, firstName);
-            Assert.AreEqual(actualUser.FamilyName, familyName);
-            Assert.AreEqual(actualUser.Email, new Email(email));
+            actualUser.Should().NotBeNull();
+            actualUser!.FirstName.Should().Be(firstName);
+            actualUser.FamilyName.Should().Be(familyName);
+            actualUser.Email.Should().Be(new Email(email));
 
             domainLoggerMock.Verify(x =>
                 x.UserCreated(actualUser.Id, actualUser.UserName, actualUser.Email),
