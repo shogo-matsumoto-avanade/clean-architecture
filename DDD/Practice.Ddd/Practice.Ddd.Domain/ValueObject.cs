@@ -1,5 +1,10 @@
 ﻿namespace Practice.Ddd.Domain;
 
+/// <summary>
+/// Value object class
+/// Domain Entity include Value object 
+/// This class will be also used when implementing Domain Entity identity
+/// </summary>
 public abstract class ValueObject
 {
     protected static bool EqualOperator(ValueObject left, ValueObject right)
@@ -51,10 +56,4 @@ public abstract class ValueObject
         return NotEqualOperator(one, two);
     }
 
-    protected abstract string ValueObjectToString();
-
-    public override string ToString()
-    {
-        return ValueObjectToString();
-    }
 }

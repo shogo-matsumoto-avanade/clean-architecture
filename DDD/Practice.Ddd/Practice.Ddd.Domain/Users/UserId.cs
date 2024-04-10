@@ -17,7 +17,7 @@ public class UserId : ValueObject
         yield return Value;
     }
 
-    protected override string ValueObjectToString()
+    public override string ToString()
     {
         return Value;
     }
