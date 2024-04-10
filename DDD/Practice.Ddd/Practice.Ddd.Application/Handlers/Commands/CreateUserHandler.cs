@@ -35,7 +35,7 @@ public class CreateUserHandler : ICommandHandler<CreateUserCommand, CreateUserCo
         
         _userRepository.Add(newUser);
 
-        await _publisher.Publish(new UserCreatedEvent(newUser.Id, newUser.UserName, newUser.Email.Value), cancellationToken);
+        await _publisher.Publish(new UserCreatedNotification(newUser.Id, newUser.UserName, newUser.Email), cancellationToken);
         
         return new CreateUserCommandResult();
     }

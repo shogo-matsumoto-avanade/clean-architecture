@@ -11,7 +11,7 @@ namespace Practice.Ddd.Application.Handlers;
 /// <remarks>
 /// Notification can execute multiple processes with no dependencies. 
 /// </remarks>
-public class UserCreatedSmsHandler : INotificationHandler<UserCreatedEvent>
+public class UserCreatedSmsHandler : INotificationHandler<UserCreatedNotification>
 {
     private readonly IMessageBus _messageBus;
     public UserCreatedSmsHandler(IMessageBus logger)
@@ -19,7 +19,7 @@ public class UserCreatedSmsHandler : INotificationHandler<UserCreatedEvent>
         _messageBus = logger;        
     }
 
-    public async Task Handle(UserCreatedEvent notification, CancellationToken cancellationToken)
+    public async Task Handle(UserCreatedNotification notification, CancellationToken cancellationToken)
     {
         await _messageBus.SendAsync($"Sent SMS of {notification.UserId}:{notification.UserName}");
     }

@@ -3,13 +3,13 @@ using Practice.Ddd.Domain.Users;
 
 namespace Practice.Ddd.Application.Requests.Notifications;
 
-public class UserCreatedEvent : INotification
+public class UserCreatedNotification : INotification
 {
     public UserId UserId { get; private set; }
     public string UserName { get; private set; }
-    public string Email { get; private set; }
+    public Email Email { get; private set; }
 
-    public UserCreatedEvent(UserId id, string userName, string email)
+    public UserCreatedNotification(UserId id, string userName, Email email)
     {
         UserId = id;
         UserName = userName;

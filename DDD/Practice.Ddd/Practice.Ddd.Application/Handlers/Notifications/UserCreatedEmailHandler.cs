@@ -11,7 +11,7 @@ namespace Practice.Ddd.Application.Handlers;
 /// <remarks>
 /// Notification can execute multiple processes with no dependencies. 
 /// </remarks>
-public class UserCreatedEmailHandler : INotificationHandler<UserCreatedEvent>
+public class UserCreatedEmailHandler : INotificationHandler<UserCreatedNotification>
 {
     private readonly IMessageBus _messageBus;
 
@@ -21,7 +21,7 @@ public class UserCreatedEmailHandler : INotificationHandler<UserCreatedEvent>
     }
 
     public async Task Handle(
-        UserCreatedEvent notification, 
+        UserCreatedNotification notification, 
         CancellationToken cancellationToken)
     {
         await _messageBus.SendAsync($"Sent Email to {notification.Email}");

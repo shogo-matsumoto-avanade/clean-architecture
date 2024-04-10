@@ -4,5 +4,5 @@ namespace Practice.Ddd.Application.Services;
 
 public interface IDomainLogger
 {
-    void UserCreated(UserId userId, string userName, string email);
+    void UserCreated(UserId userId, string userName, Email email);
 }
