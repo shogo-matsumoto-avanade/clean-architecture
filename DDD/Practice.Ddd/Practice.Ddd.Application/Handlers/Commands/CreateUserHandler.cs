@@ -11,16 +11,13 @@ public class CreateUserHandler : ICommandHandler<CreateUserCommand, CreateUserCo
 {
     private readonly IUserRepository _userRepository;
     private readonly IPublisher _publisher;
-    private readonly UserService _userService;
 
     public CreateUserHandler(
         IUserRepository userRepository,
-        IPublisher publisher,
-        UserService userService)
+        IPublisher publisher)
     {
         _userRepository = userRepository;
         _publisher = publisher;
-        _userService = userService;
     }
 
     /// <summary>
@@ -31,7 +28,8 @@ public class CreateUserHandler : ICommandHandler<CreateUserCommand, CreateUserCo
     /// <returns></returns>
     public async Task<CreateUserCommandResult> Handle(CreateUserCommand request, CancellationToken cancellationToken)
     {
-        if (await _userService.IsDeplicatedEmailAsync(_userRepository, new Email(request.Email)))
+        var user = await _userRepository.FindByEmailAsync(new Email(request.Email));
+        if (user is not null)
         {
             throw new ValidationException($"The email has been already regsitered.");
         }
