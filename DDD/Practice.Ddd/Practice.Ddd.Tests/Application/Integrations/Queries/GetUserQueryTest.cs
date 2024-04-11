@@ -19,7 +19,7 @@ namespace Practice.Ddd.Tests.Application.Integrations.Queries
 
             //Assert
             result.HasError.Should().BeTrue(testMessage);
-            result.Message.Should().Be("Value cannot be null. (Parameter 'UserId')", testMessage);
+            result.Message.Should().Be("Validation failed: \r\n -- Id: 'Id' ‚Í‹ó‚Å‚ ‚Á‚Ä‚Í‚È‚è‚Ü‚¹‚ñB Severity: Error", testMessage);
         }
 
         [TestMethod]

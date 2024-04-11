@@ -52,6 +52,8 @@ namespace Practice.Ddd.Tests.Application.Integrations.Queries
                 await unitOfWork.SaveChangesAsync();
             }
 
+            Task.WaitAll();
+
             //Arrange
             var busMock = _servicesProvider.GetRequiredService<Mock<IBus>>();
             var domainLoggerMock = _servicesProvider.GetRequiredService<Mock<IDomainLogger>>();
@@ -60,6 +62,8 @@ namespace Practice.Ddd.Tests.Application.Integrations.Queries
 
             //Act
             var result = await _mediator.Send(query);
+
+            Task.WaitAll();
 
             //Assert
             var actualUser = await userRepository.FindByEmailAsync(new Email(email));

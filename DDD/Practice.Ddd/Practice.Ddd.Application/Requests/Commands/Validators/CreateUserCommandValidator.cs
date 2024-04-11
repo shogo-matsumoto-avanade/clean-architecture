@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using Practice.Ddd.Domain.Users;
 
 namespace Practice.Ddd.Application.Requests.Commands;
 
@@ -14,7 +15,7 @@ public class CreateUserCommandValidator : AbstractValidator<CreateUserCommand>
             .MaximumLength(50);
         RuleFor(x => x.Email)
             .NotEmpty()
-            .MaximumLength(255)
-            .Matches("^[A-Za-z0-9]+[A-Za-z0-9_.-]*@[A-Za-z0-9_.-]+\\.[A-Za-z0-9]+$");
+            .MaximumLength(Email.MaxLength)
+            .Matches(Email.FormatPattern);
     }
 }
