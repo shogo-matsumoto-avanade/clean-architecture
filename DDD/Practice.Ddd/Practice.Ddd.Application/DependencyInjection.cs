@@ -1,9 +1,7 @@
 ﻿using FluentValidation;
-using MediatR;
-using MediatR.Pipeline;
 using Microsoft.Extensions.DependencyInjection;
-using Practice.Ddd.Application.Handlers;
 using Practice.Ddd.Application.PipelineBehaviors;
+using Practice.Ddd.Domain.Users;
 
 namespace Practice.Ddd.Application;
 
@@ -24,6 +22,8 @@ public static class DependencyInjection
         });
 
         services.AddValidatorsFromAssembly(assembly);
+
+        services.AddScoped<UserService, UserService>();
         return services;
     }
 }

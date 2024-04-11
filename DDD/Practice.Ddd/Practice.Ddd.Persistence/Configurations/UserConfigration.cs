@@ -22,7 +22,7 @@ internal class UserConfigration : IEntityTypeConfiguration<User>
         builder.Property(u => u.Email).HasConversion(
             email => email.Value,
             value => new Email(value))
-            .HasMaxLength(255);
+            .HasMaxLength(Email.MaxLength);
 
         builder.HasIndex(c => c.Email).IsUnique();
     }
