@@ -1,5 +1,4 @@
 ﻿using FluentAssertions;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel.DataCollection;
 using Practice.Ddd.Application.Requests.Commands;
 
 namespace Practice.Ddd.Tests.Application.Units.Validators;

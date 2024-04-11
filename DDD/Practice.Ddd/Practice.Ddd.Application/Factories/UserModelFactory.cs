@@ -20,6 +20,6 @@ public static class UserModelFactory
         {
             return new NullUserModel();
         }
-        return new UserModel(userName, string.Empty);
+        return new UserModel(userName, email);
     }
 }
