@@ -23,12 +23,12 @@ public sealed class FindUserByEmailHandler : IQueryHandler<FindUserByEmailQuery,
     public async Task<FindUserResult> Handle(FindUserByEmailQuery request, CancellationToken cancellationToken)
     {
         var user = await _repository.FindByEmailAsync(new Email(request.Email));
-        var userModel = UserModelFactory.Create(user);
-        var model = new FindUserResult()
+        var userDto = UserDtoFactory.Create(user);
+        var result = new FindUserResult()
         {
-            UserName = userModel.UserName,
-            Email = userModel.Email,
+            UserName = userDto.UserName,
+            Email = userDto.Email,
         };
-        return model;
+        return result;
     }
 }

@@ -2,17 +2,12 @@
 
 namespace Practice.Ddd.Application.Models.UserModels;
 
-internal class UserModel : IUserModel
+internal class UserDto : IUserDto
 {
-    public UserModel(User user)
+    public UserDto(User user)
     {
         UserName = user.UserName;
         Email = user.Email.ToString();
-    }
-    public UserModel(string userName, string email)
-    {
-        UserName = userName;
-        Email = email;
     }
     public string UserName { get; private set; }
 

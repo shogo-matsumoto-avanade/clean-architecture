@@ -1,6 +1,6 @@
 ﻿namespace Practice.Ddd.Application.Models.UserModels
 {
-    internal class NullUserModel : IUserModel
+    internal class NullUserDto : IUserDto
     {
         public string UserName => "Unknown";
 
