@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Practice.Ddd.Application;
+using Practice.Ddd.Domain;
 
 namespace Practice.Ddd.Tests.Application.Units;
 
@@ -17,6 +18,7 @@ public class BaseUnitTest
         var services = new ServiceCollection();
         _servicesProvider = services
             .AddUnitTestApplication()
+            .AddDomain()
             .AddTestPersistence()
             .AddTestInfrastructure()
             .BuildServiceProvider();

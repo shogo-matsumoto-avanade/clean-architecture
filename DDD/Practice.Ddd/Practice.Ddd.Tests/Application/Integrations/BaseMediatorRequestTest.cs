@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Practice.Ddd.Application;
+using Practice.Ddd.Domain;
 
 namespace Practice.Ddd.Tests.Application.Integrations;
 
@@ -21,6 +22,7 @@ public abstract class BaseMediatorRequestTest
         var services = new ServiceCollection();
         _servicesProvider = services
             .AddApplication()
+            .AddDomain()
             .AddTestPersistence()
             .AddTestInfrastructure()
             .BuildServiceProvider();
