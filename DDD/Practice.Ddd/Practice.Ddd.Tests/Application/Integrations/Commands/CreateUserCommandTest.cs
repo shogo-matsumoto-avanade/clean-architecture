@@ -28,13 +28,13 @@ namespace Practice.Ddd.Tests.Application.Integrations.Queries
         }
 
         public static IEnumerable<object[]> InvalidCreateUserCommandData => [
-                    [null, "unittest", "xxx@xxx", "Validation failed: \r\n -- FirstName: 'First Name' は空であってはなりません。 Severity: Error", "When first name is null, query should be error"],
-                    ["", "unittest", "xxx@xxx", "Validation failed: \r\n -- FirstName: 'First Name' は空であってはなりません。 Severity: Error", "When first name is empty, query should be error"],
-                    ["test", null, "xxx@xxx", "Validation failed: \r\n -- FamilyName: 'Family Name' は空であってはなりません。 Severity: Error", "When family name is null, query should be error"],
-                    ["test", "", "xxx@xxx", "Validation failed: \r\n -- FamilyName: 'Family Name' は空であってはなりません。 Severity: Error", "When family name is empty, query should be error"],
+                    [null, "unittest", "xxx@xxx.xxx", "Validation failed: \r\n -- FirstName: 'First Name' は空であってはなりません。 Severity: Error", "When first name is null, query should be error"],
+                    ["", "unittest", "xxx@xxx.xxx", "Validation failed: \r\n -- FirstName: 'First Name' は空であってはなりません。 Severity: Error", "When first name is empty, query should be error"],
+                    ["test", null, "xxx@xxx.xxx", "Validation failed: \r\n -- FamilyName: 'Family Name' は空であってはなりません。 Severity: Error", "When family name is null, query should be error"],
+                    ["test", "", "xxx@xxx.xxx", "Validation failed: \r\n -- FamilyName: 'Family Name' は空であってはなりません。 Severity: Error", "When family name is empty, query should be error"],
                     ["test", "unittest", null, "Validation failed: \r\n -- Email: 'Email' は空であってはなりません。 Severity: Error", "When email is null, query should be error"],
-                    ["test", "unittest", "", "Validation failed: \r\n -- Email: 'Email' は空であってはなりません。 Severity: Error", "When email is empty, query should be error"],
-                    ["test", "unittest", "a@b", "Invalid format of Email value object (Parameter 'Email')", "When email is invalid, query should be error"],
+                    ["test", "unittest", "", "Validation failed: \r\n -- Email: 'Email' は空であってはなりません。 Severity: Error\r\n -- Email: 'Email' は正しい形式ではありません。 Severity: Error", "When email is empty, query should be error"],
+                    ["test", "unittest", "a@b", "Validation failed: \r\n -- Email: 'Email' は正しい形式ではありません。 Severity: Error", "When email is invalid, query should be error"],
                 ];
 
 
