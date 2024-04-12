@@ -22,7 +22,12 @@ public sealed class FindUserByIdHandler : IQueryHandler<FindUserByIdQuery, FindU
     /// <returns></returns>
     public async Task<FindUserResult> Handle(FindUserByIdQuery request, CancellationToken cancellationToken)
     {
-        var user = await _repository.FindByIdAsync(new UserId(request.Id));
+        var userId = new UserId(request.Id);
+        var user = await _repository.FindByIdAsync(userId);
+        if (user is null)
+        {
+            throw new UserNotFoundException(userId);
+        }
         var userDto = UserDtoFactory.Create(user);
         var result = new FindUserResult()
         {

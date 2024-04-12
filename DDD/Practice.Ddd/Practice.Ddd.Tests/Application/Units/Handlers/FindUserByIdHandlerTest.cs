@@ -12,7 +12,6 @@ public class FindUserByIdHandlerTest : BaseUnitTest
 
     [TestMethod]
     [DataRow("test-id", "test user", "Find existing user")]
-    [DataRow("aaa", "Unknown", "Find not existing user")]
     public async Task Find_Valid_Existing_User(string id, string expectedUserName, string testMessage)
     {
         //Arrange

@@ -23,7 +23,6 @@ public static class DependencyInjection
 
         services.AddValidatorsFromAssembly(assembly);
 
-        services.AddScoped<UserService, UserService>();
         return services;
     }
 }

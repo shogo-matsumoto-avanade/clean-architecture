@@ -4,7 +4,7 @@ using Practice.Ddd.Application.Requests.Queries;
 namespace Practice.Ddd.Tests.Application.Integrations.Queries
 {
     [TestClass]
-    public class GetUserQueryTest : BaseMediatorRequestTest
+    public class GetUserByIdQueryTest : BaseMediatorRequestTest
     {
         [TestMethod]
         [DataRow(null, "When id is null, query should be error")]
@@ -41,8 +41,8 @@ namespace Practice.Ddd.Tests.Application.Integrations.Queries
         }
 
         [TestMethod]
-        [DataRow("aaaa", "Unknown", "Unknown Mail", "Search unknown user")]
-        public async Task Find_NOT_Existing_User(string id, string userName, string email, string message)
+        [DataRow("aaaa", "Search unexisting user")]
+        public async Task Find_NOT_Existing_User(string id, string testMessage)
         {
             //Arrange
             var query = new FindUserByIdQuery(id);
@@ -51,10 +51,8 @@ namespace Practice.Ddd.Tests.Application.Integrations.Queries
             var result = await _mediator.Send(query);
 
             //Assert
-            result.HasError.Should().BeFalse(message);
-            result.Message.Should().Be(string.Empty, message);
-            result.UserName.Should().Be(userName, message);
-            result.Email.Should().Be(email, message);
+            result.HasError.Should().BeTrue(testMessage);
+            result.Message.Should().Be($"User is not found by Id : {id}", testMessage);
         }
 
     }

@@ -1,16 +1,12 @@
-﻿using Practice.Ddd.Application.Models.UserModels;
+﻿using Practice.Ddd.Application.Models;
 using Practice.Ddd.Domain.Users;
 
 namespace Practice.Ddd.Application.Factories;
 
 public static class UserDtoFactory
 {
-    public static IUserDto Create(User? user)
+    public static UserDto Create(User user)
     {
-        if (user is null)
-        {
-            return new NullUserDto();
-        }
         return new UserDto(user);
     }
 }

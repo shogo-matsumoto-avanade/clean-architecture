@@ -31,7 +31,7 @@ public class CreateUserHandler : ICommandHandler<CreateUserCommand, CreateUserCo
         var user = await _userRepository.FindByEmailAsync(new Email(request.Email));
         if (user is not null)
         {
-            throw new ValidationException($"The email has been already regsitered.");
+            throw new EmailDeplicatedException(new Email(request.Email));
         }
         var newUser = User.Create(request.FirstName, request.FamilyName, request.Email);
 

@@ -27,9 +27,4 @@ public class Email : ValueObject
     {
         yield return Value;
     }
-
-    public override string ToString()
-    {
-        return Value;
-    }
 }

@@ -35,6 +35,7 @@ namespace Practice.Ddd.Tests.Application.Integrations.Queries
                     ["test", "unittest", null, "Validation failed: \r\n -- Email: 'Email' は空であってはなりません。 Severity: Error", "When email is null, query should be error"],
                     ["test", "unittest", "", "Validation failed: \r\n -- Email: 'Email' は空であってはなりません。 Severity: Error\r\n -- Email: 'Email' は正しい形式ではありません。 Severity: Error", "When email is empty, query should be error"],
                     ["test", "unittest", "a@b", "Validation failed: \r\n -- Email: 'Email' は正しい形式ではありません。 Severity: Error", "When email is invalid, query should be error"],
+                    ["test", "unittest", "testmail@test.xxx.com", "The email testmail@test.xxx.com has been already regsitered", "When the emai already has been registered, query should be error"]
                 ];
 
 

@@ -12,7 +12,6 @@ public class FindUserByEmailHandlerTest : BaseUnitTest
 
     [TestMethod]
     [DataRow("testmail@test.xxx.com", "test user", "Find existing user")]
-    [DataRow("test@test.xxx.com", "Unknown", "Find not existing user")]
     public async Task Find_Valid_Existing_User(string email, string expectedUserName, string testMessage)
     {
         //Arrange

@@ -15,7 +15,7 @@ public class DomainLogger : IDomainLogger
 
     public void UserCreated(UserId userId, string userName, Email email)
     {
-        _logger.LogInformation("An user has been created. Id: {userId}, Name: {userName}, Email: {email}", userId.ToString(), userName, email.ToString());
+        _logger.LogInformation("An user has been created. Id: {userId}, Name: {userName}, Email: {email}", userId.Value, userName, email.Value);
     }
 
 }
