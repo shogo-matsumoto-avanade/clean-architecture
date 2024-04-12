@@ -1,9 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Practice.Ddd.Application.Requests.Commands;
-using Practice.Ddd.Application.Factories;
-using Practice.Ddd.Application.Requests.Notifications;
 using Practice.Ddd.Application.Requests.Queries;
+using Practice.Ddd.Domain.Users;
 using Practice.Ddd.Web.Models;
 
 namespace Practice.Ddd.Web.Controllers;
@@ -21,13 +20,17 @@ public class UserController : Controller
     {
         var user = await _mediator.Send(new FindUserByIdQuery(id!));
 
-        return user.HasError
-            ? BadRequest(user.Message)
-            : Ok(new UserViewModel()
-            {
-                UserName = user.UserName,
-                Email = user.Email,
-            });
+        if (user.HasError)
+        {
+            return user.ExceptionType == typeof(UserNotFoundException)
+                ? NotFound(user.Message)
+                : BadRequest(user.Message);
+        }
+        return Ok(new UserViewModel()
+        {
+            UserName = user.UserName,
+            Email = user.Email,
+        });
     }
 
     [HttpGet("/user/email")]
@@ -35,13 +38,17 @@ public class UserController : Controller
     {
         var user = await _mediator.Send(new FindUserByEmailQuery(email!));
 
-        return user.HasError
-            ? BadRequest(user.Message)
-            : Ok(new UserViewModel()
-            {
-                UserName = user.UserName,
-                Email = user.Email,
-            });
+        if (user.HasError)
+        {
+            return user.ExceptionType == typeof(UserNotFoundException)
+                ? NotFound(user.Message) 
+                : BadRequest(user.Message);
+        }
+        return Ok(new UserViewModel()
+        {
+            UserName = user.UserName,
+            Email = user.Email,
+        });
     }
 
     [HttpPost("/user/create")]

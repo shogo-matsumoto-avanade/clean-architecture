@@ -25,6 +25,7 @@ public sealed class GlobalExceptionHandler<TRequest, TResponse, TException> : IR
         {
             HasError = true,
             Message = exception.Message,
+            ExceptionType = exception.GetType(),
         };
 
         state.SetHandled(response);

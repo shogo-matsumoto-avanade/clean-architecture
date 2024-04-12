@@ -4,5 +4,6 @@
     {
         bool HasError { get; }
         string Message { get; }
+        Type? ExceptionType { get; }
     }
 }
