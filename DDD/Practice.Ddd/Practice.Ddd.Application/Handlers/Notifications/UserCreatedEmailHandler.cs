@@ -23,6 +23,6 @@ public class UserCreatedEmailHandler : INotificationHandler<UserCreatedEvent>
         UserCreatedEvent notification, 
         CancellationToken cancellationToken)
     {
-        await _messageBus.SendAsync($"Sent Email to {notification.Email}");
+        await _messageBus.SendAsync($"Sent Email to {notification.Email}", cancellationToken);
     }
 }

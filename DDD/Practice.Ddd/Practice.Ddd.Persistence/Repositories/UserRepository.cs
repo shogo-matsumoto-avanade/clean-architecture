@@ -17,14 +17,14 @@ public sealed class UserRepository : IUserRepository
         _context.User.Add(user);
     }
 
-    public async Task<User?> FindByEmailAsync(Email email)
+    public async Task<User?> FindByEmailAsync(Email email, CancellationToken cancellationToken = default)
     {
-        return await _context.User.SingleOrDefaultAsync(u => u.Email == email);
+        return await _context.User.SingleOrDefaultAsync(u => u.Email == email, cancellationToken);
     }
 
-    public async Task<User?> FindByIdAsync(UserId userId)
+    public async Task<User?> FindByIdAsync(UserId userId, CancellationToken cancellationToken = default)
     {
-        return await _context.User.FindAsync(userId);
+        return await _context.User.FindAsync(userId, cancellationToken);
     }
 
     public void Remove(User user)

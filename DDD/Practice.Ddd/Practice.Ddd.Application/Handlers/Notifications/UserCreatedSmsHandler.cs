@@ -20,6 +20,6 @@ public class UserCreatedSmsHandler : INotificationHandler<UserCreatedEvent>
 
     public async Task Handle(UserCreatedEvent notification, CancellationToken cancellationToken)
     {
-        await _messageBus.SendAsync($"Sent SMS of {notification.UserId}:{notification.UserName}");
+        await _messageBus.SendAsync($"Sent SMS of {notification.UserId}:{notification.UserName}", cancellationToken);
     }
 }

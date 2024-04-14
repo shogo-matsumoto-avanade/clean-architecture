@@ -14,8 +14,8 @@ internal class MessageBus : IMessageBus
         _bus = bus;
     }
 
-    public async Task SendAsync(string message)
+    public async Task SendAsync(string message, CancellationToken cancellationToken = default)
     {
-        await _bus.SendAsync(message);
+        await _bus.SendAsync(message, cancellationToken);
     }
 }

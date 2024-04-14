@@ -2,5 +2,5 @@
 
 public interface IMessageBus
 {
-    Task SendAsync(string message);
+    Task SendAsync(string message, CancellationToken cancellationToken = default);
 }

@@ -15,7 +15,7 @@ internal class Bus : IBus
         _logger = logger;
     }
 
-    public Task SendAsync(string message)
+    public Task SendAsync(string message, CancellationToken cancellation = default)
     {
         _logger.LogInformation(message);
         return Task.CompletedTask;

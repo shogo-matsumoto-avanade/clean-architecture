@@ -78,8 +78,8 @@ namespace Practice.Ddd.Tests.Application.Integrations.Queries
             domainLoggerMock.Verify(x =>
                 x.UserCreated(actualUser.Id, actualUser.UserName, actualUser.Email),
                 Times.Once);
-            busMock.Verify(x => x.SendAsync($"Sent SMS of {actualUser!.Id}:{actualUser.UserName}"), Times.Once);
-            busMock.Verify(x => x.SendAsync($"Sent Email to {actualUser!.Email}"), Times.Once);
+            busMock.Verify(x => x.SendAsync($"Sent SMS of {actualUser!.Id}:{actualUser.UserName}", default), Times.Once);
+            busMock.Verify(x => x.SendAsync($"Sent Email to {actualUser!.Email}", default), Times.Once);
         }
     }
 }
