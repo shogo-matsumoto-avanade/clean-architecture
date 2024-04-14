@@ -1,8 +1,9 @@
-﻿using Practice.Ddd.Domain.Products;
+﻿using Practice.Ddd.Domain.Primitives;
+using Practice.Ddd.Domain.Products;
 
 namespace Practice.Ddd.Domain.Orders;
 
-public class LineItem
+public class LineItem : DomainEntity
 {
     private LineItem() { }
 

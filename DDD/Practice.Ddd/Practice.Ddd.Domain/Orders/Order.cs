@@ -1,8 +1,9 @@
 ﻿using Practice.Ddd.Domain.Customers;
+using Practice.Ddd.Domain.Primitives;
 
 namespace Practice.Ddd.Domain.Orders;
 
-public class Order
+public class Order : DomainEntity
 {
     private readonly HashSet<LineItem> _lineItems = [];
     private Order() { }

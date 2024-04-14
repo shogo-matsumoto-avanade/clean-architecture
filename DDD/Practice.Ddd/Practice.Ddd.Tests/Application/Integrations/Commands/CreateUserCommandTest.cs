@@ -67,6 +67,8 @@ namespace Practice.Ddd.Tests.Application.Integrations.Queries
             Task.WaitAll();
 
             //Assert
+            result.Message.Should().BeEmpty();
+            result.HasError.Should().BeFalse();
             var actualUser = await userRepository.FindByEmailAsync(new Email(email));
             actualUser.Should().NotBeNull();
             actualUser!.FirstName.Should().Be(firstName);

@@ -1,8 +1,8 @@
-﻿using System.Runtime.CompilerServices;
+﻿using Practice.Ddd.Domain.Primitives;
 
 namespace Practice.Ddd.Domain.Products;
 
-public class Product
+public class Product : DomainEntity
 {
     public ProductId Id { get; private set; }
     public string Name { get; private set; } = string.Empty;

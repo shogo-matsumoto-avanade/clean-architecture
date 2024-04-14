@@ -1,9 +1,7 @@
 ﻿using MediatR;
 using Practice.Ddd.Application.Requests.Commands;
-using Practice.Ddd.Application.Requests.Notifications;
 using Practice.Ddd.Application.Utilities.Requests;
 using Practice.Ddd.Domain.Users;
-using System.ComponentModel.DataAnnotations;
 
 namespace Practice.Ddd.Application.Handlers;
 
@@ -36,8 +34,6 @@ public class CreateUserHandler : ICommandHandler<CreateUserCommand, CreateUserCo
         var newUser = User.Create(request.FirstName, request.FamilyName, request.Email);
 
         _userRepository.Add(newUser);
-
-        await _publisher.Publish(new UserCreatedNotification(newUser.Id, newUser.UserName, newUser.Email), cancellationToken);
 
         return new CreateUserCommandResult();
     }

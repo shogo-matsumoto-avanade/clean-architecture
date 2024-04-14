@@ -1,6 +1,8 @@
-﻿namespace Practice.Ddd.Domain.Customers;
+﻿using Practice.Ddd.Domain.Primitives;
 
-public class Customer
+namespace Practice.Ddd.Domain.Customers;
+
+public class Customer : DomainEntity
 {
     public CustomerId Id { get; private set; }
     public string Email { get; private set; } = string.Empty;

@@ -1,6 +1,8 @@
-﻿namespace Practice.Ddd.Domain.Users;
+﻿using Practice.Ddd.Domain.Primitives;
 
-public class User
+namespace Practice.Ddd.Domain.Users;
+
+public class User : DomainEntity
 {
     private User() { }
     /// <summary>
@@ -38,6 +40,10 @@ public class User
     public static User Create(string firstName, string familyName, string email)
     {
         var id = Guid.NewGuid().ToString()[..30];
-        return new User(id, firstName, familyName, email);
+        var user = new User(id, firstName, familyName, email);
+
+        user.Raise(new UserCreatedEvent(Guid.NewGuid(), user.Id, user.UserName, user.Email));
+
+        return user;
     }
 }
