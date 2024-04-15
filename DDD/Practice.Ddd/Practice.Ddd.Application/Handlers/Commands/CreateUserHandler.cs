@@ -10,8 +10,7 @@ public class CreateUserHandler : ICommandHandler<CreateUserCommand, CreateUserCo
     private readonly IUserRepository _userRepository;
 
     public CreateUserHandler(
-        IUserRepository userRepository,
-        IPublisher publisher)
+        IUserRepository userRepository)
     {
         _userRepository = userRepository;
     }
