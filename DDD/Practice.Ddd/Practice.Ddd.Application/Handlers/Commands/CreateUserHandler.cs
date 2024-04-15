@@ -8,14 +8,12 @@ namespace Practice.Ddd.Application.Handlers;
 public class CreateUserHandler : ICommandHandler<CreateUserCommand, CreateUserCommandResult>
 {
     private readonly IUserRepository _userRepository;
-    private readonly IPublisher _publisher;
 
     public CreateUserHandler(
         IUserRepository userRepository,
         IPublisher publisher)
     {
         _userRepository = userRepository;
-        _publisher = publisher;
     }
 
     /// <summary>
