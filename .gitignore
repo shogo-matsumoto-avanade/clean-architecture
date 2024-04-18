@@ -17,3 +17,7 @@
 /DDD/Practice.Ddd/Practice.Ddd.Tests/obj
 /DDD/Practice.Ddd/Practice.Ddd.Persistence/bin/Debug/net8.0
 /DDD/Practice.Ddd/Practice.Ddd.Persistence/obj
+/DDD/Practice.Ddd/Practice.Ddd.Web.Blazor/Practice.Ddd.Web.Blazor/bin/Debug/net8.0
+/DDD/Practice.Ddd/Practice.Ddd.Web.Blazor/Practice.Ddd.Web.Blazor/obj
+/DDD/Practice.Ddd/Practice.Ddd.Web.Blazor/Practice.Ddd.Web.Blazor.Client/bin/Debug/net8.0
+/DDD/Practice.Ddd/Practice.Ddd.Web.Blazor/Practice.Ddd.Web.Blazor.Client/obj
